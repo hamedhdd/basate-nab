@@ -77,7 +77,7 @@
                 © <?php echo basate_fa_num(date('Y')); ?> تمامی حقوق مادی و معنوی محفوظ و متعلق به فروشگاه <strong>بساط ناب</strong> است.
             </div>
             <div>
-                طراحی اختصاصی رترو و بهینه‌سازی فروشگاهی با ووکامرس
+                طراحی اختصاصی و پیاده سازی by <a href="https://silversky.ir/" target="_blank" rel="noopener" style="color:var(--color-primary); font-weight:700; text-decoration:none;">SilverSky</a>
             </div>
         </div>
     </div>

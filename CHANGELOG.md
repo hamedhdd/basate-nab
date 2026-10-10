@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.2.0] - 2026-10-10
 
 ### Changed
+- **Footer Credits**:
+  - Updated theme development signature in `footer.php` to "طراحی اختصاصی و پیاده سازی by SilverSky" linking directly to `https://silversky.ir/`.
 - **Contact Info & Inquiries**:
   - Temporarily removed phone numbers from top announcement bar, mobile drawer, footer, and promotional banners (leaving fields empty as requested pending future update).
   - Directed customer consultations and inquiries directly to Instagram Direct (`@basate_nab`).
