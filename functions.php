@@ -1,0 +1,368 @@
+<?php
+/**
+ * Basate Nab (بساط ناب) - functions.php
+ * Comprehensive WooCommerce Integration, Technical SEO & Iranian Store Optimization
+ */
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+define('BASATE_VERSION', '1.0.0');
+define('BASATE_DIR', get_template_directory());
+define('BASATE_URI', get_template_directory_uri());
+
+// 1. Theme Setup
+function basate_nab_setup() {
+    load_theme_textdomain('basate-nab', BASATE_DIR . '/languages');
+
+    add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
+    add_theme_support('custom-logo', array(
+        'height'      => 80,
+        'width'       => 240,
+        'flex-height' => true,
+        'flex-width'  => true,
+    ));
+
+    add_theme_support('html5', array(
+        'search-form',
+        'comment-form',
+        'comment-list',
+        'gallery',
+        'caption',
+        'style',
+        'script'
+    ));
+
+    // WooCommerce Support
+    add_theme_support('woocommerce');
+    add_theme_support('wc-product-gallery-zoom');
+    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('wc-product-gallery-slider');
+
+    // Register Navigation Menus
+    register_nav_menus(array(
+        'primary-menu'   => __('فهرست اصلی هدر', 'basate-nab'),
+        'mobile-menu'    => __('منوی کشویی موبایل', 'basate-nab'),
+        'footer-menu-1'  => __('فوتر دسته‌بندی‌ها', 'basate-nab'),
+        'footer-menu-2'  => __('فوتر خدمات مشتریان', 'basate-nab'),
+    ));
+}
+add_action('after_setup_theme', 'basate_nab_setup');
+
+// 2. Enqueue Assets
+function basate_nab_scripts() {
+    wp_enqueue_style('vazirmatn-font', 'https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css', array(), '33.003');
+    wp_enqueue_style('basate-style', get_stylesheet_uri(), array(), BASATE_VERSION);
+    wp_enqueue_style('basate-main', BASATE_URI . '/assets/css/main.css', array('basate-style'), BASATE_VERSION);
+
+    wp_enqueue_script('basate-main-js', BASATE_URI . '/assets/js/main.js', array(), BASATE_VERSION, true);
+
+    wp_localize_script('basate-main-js', 'basateData', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('basate_nonce')
+    ));
+}
+add_action('wp_enqueue_scripts', 'basate_nab_scripts');
+
+// 3. Persian Digits Helper
+function basate_fa_num($number) {
+    $en = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+    $fa = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
+    return str_replace($en, $fa, (string)$number);
+}
+
+// 4. WooCommerce Iranian Store Customizations
+// Format Currency Symbol to Toman
+add_filter('woocommerce_currency_symbol', 'basate_nab_currency_symbol', 10, 2);
+function basate_nab_currency_symbol($symbol, $currency) {
+    if ($currency === 'IRT' || $currency === 'IRR') {
+        return 'تومان';
+    }
+    return $symbol;
+}
+
+// Convert numbers in WooCommerce price HTML to Persian digits
+add_filter('formatted_woocommerce_price', function($formatted_price) {
+    return basate_fa_num($formatted_price);
+});
+
+// Update Cart Count via AJAX fragments
+add_filter('woocommerce_add_to_cart_fragments', 'basate_nab_cart_fragments');
+function basate_nab_cart_fragments($fragments) {
+    if (!class_exists('WooCommerce')) return $fragments;
+    
+    $count = WC()->cart->get_cart_contents_count();
+    $fragments['span.cart-badge-count'] = '<span class="cart-badge-count">' . basate_fa_num($count) . '</span>';
+    $fragments['span.mobile-nav-badge'] = '<span class="mobile-nav-badge">' . basate_fa_num($count) . '</span>';
+    return $fragments;
+}
+
+// 5. Advanced SEO Optimization Engine (Standards matching silversky.ir)
+function basate_nab_seo_meta_tags() {
+    $site_title = get_bloginfo('name') ?: 'بساط ناب';
+    $site_desc = get_bloginfo('description') ?: 'فروشگاه تخصصی آباژور و دکوراتیو وینتیج، تابلوهای رترو و وسایل آنتیک بساط ناب با ارسال ایمن به سراسر کشور';
+    $canonical_url = is_front_page() ? home_url('/') : get_permalink();
+    $og_title = $site_title . ' | آباژور و دکوراتیو وینتیج و وسایل آنتیک';
+    $og_desc = $site_desc;
+    $og_image = BASATE_URI . '/assets/images/og-cover.jpg';
+    $og_type = 'website';
+
+    if (is_singular('product') && function_exists('wc_get_product')) {
+        global $post;
+        $product = wc_get_product($post->ID);
+        if ($product) {
+            $og_title = $product->get_name() . ' | ' . $site_title;
+            $og_desc = wp_strip_all_tags($product->get_short_description() ?: $product->get_description() ?: $site_desc);
+            $og_type = 'product';
+            if ($product->get_image_id()) {
+                $img = wp_get_attachment_image_src($product->get_image_id(), 'large');
+                if ($img) $og_image = $img[0];
+            }
+        }
+    } elseif (is_singular('post') || is_page()) {
+        global $post;
+        $og_title = get_the_title() . ' | ' . $site_title;
+        $og_desc = wp_strip_all_tags(get_the_excerpt() ?: $site_desc);
+        $og_type = 'article';
+        if (has_post_thumbnail()) {
+            $og_image = get_the_post_thumbnail_url($post->ID, 'large');
+        }
+    }
+
+    echo "\n<!-- Basate Nab Advanced SEO Engine -->\n";
+    echo '<meta name="description" content="' . esc_attr($og_desc) . '">' . "\n";
+    echo '<meta name="robots" content="index, follow, max-image-preview:large">' . "\n";
+    echo '<link rel="canonical" href="' . esc_url($canonical_url) . '">' . "\n";
+    
+    // Open Graph
+    echo '<meta property="og:locale" content="fa_IR">' . "\n";
+    echo '<meta property="og:type" content="' . esc_attr($og_type) . '">' . "\n";
+    echo '<meta property="og:title" content="' . esc_attr($og_title) . '">' . "\n";
+    echo '<meta property="og:description" content="' . esc_attr($og_desc) . '">' . "\n";
+    echo '<meta property="og:url" content="' . esc_url($canonical_url) . '">' . "\n";
+    echo '<meta property="og:site_name" content="' . esc_attr($site_title) . '">' . "\n";
+    echo '<meta property="og:image" content="' . esc_url($og_image) . '">' . "\n";
+
+    // Twitter Cards
+    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr($og_title) . '">' . "\n";
+    echo '<meta name="twitter:description" content="' . esc_attr($og_desc) . '">' . "\n";
+    echo '<meta name="twitter:image" content="' . esc_url($og_image) . '">' . "\n";
+
+    // JSON-LD Structured Data
+    basate_nab_schema_jsonld();
+    echo "<!-- /Basate Nab Advanced SEO Engine -->\n\n";
+}
+add_action('wp_head', 'basate_nab_seo_meta_tags', 1);
+
+// JSON-LD Schema Generator
+function basate_nab_schema_jsonld() {
+    $schema_graph = array();
+
+    // 1. Organization & Local Store
+    $org_schema = array(
+        '@type' => array('Organization', 'HomeGoodsStore'),
+        '@id'   => home_url('/#organization'),
+        'name'  => 'بساط ناب - فروشگاه آباژور و دکوراتیو وینتیج',
+        'url'   => home_url('/'),
+        'logo'  => array(
+            '@type' => 'ImageObject',
+            '@id'   => home_url('/#logo'),
+            'url'   => BASATE_URI . '/assets/images/logo.png',
+            'caption' => 'بساط ناب'
+        ),
+        'sameAs' => array(
+            'https://www.instagram.com/basate_nab'
+        ),
+        'description' => 'فروشگاه تخصصی آباژور و چراغ‌های وینتیج، تابلوهای رترو، ظروف کهنه‌کاری و اشیای آنتیک دست‌ساز و وارداتی',
+        'address' => array(
+            '@type' => 'PostalAddress',
+            'addressCountry' => 'IR',
+            'addressRegion' => 'Tehran'
+        ),
+        'priceRange' => '$$'
+    );
+    $schema_graph[] = $org_schema;
+
+    // 2. WebSite Schema with Sitelinks Searchbox
+    $website_schema = array(
+        '@type' => 'WebSite',
+        '@id'   => home_url('/#website'),
+        'url'   => home_url('/'),
+        'name'  => 'بساط ناب',
+        'publisher' => array('@id' => home_url('/#organization')),
+        'potentialAction' => array(
+            '@type' => 'SearchAction',
+            'target' => array(
+                '@type' => 'EntryPoint',
+                'urlTemplate' => home_url('/?s={search_term_string}&post_type=product')
+            ),
+            'query-input' => 'required name=search_term_string'
+        )
+    );
+    $schema_graph[] = $website_schema;
+
+    // 3. Product Schema on Single Product
+    if (is_singular('product') && function_exists('wc_get_product')) {
+        global $post;
+        $product = wc_get_product($post->ID);
+        if ($product) {
+            $prod_schema = array(
+                '@type' => 'Product',
+                '@id'   => get_permalink($post->ID) . '#product',
+                'name'  => $product->get_name(),
+                'description' => wp_strip_all_tags($product->get_short_description() ?: $product->get_description()),
+                'url'   => get_permalink($post->ID),
+                'brand' => array(
+                    '@type' => 'Brand',
+                    'name' => 'بساط ناب'
+                ),
+                'offers' => array(
+                    '@type' => 'Offer',
+                    'price' => $product->get_price(),
+                    'priceCurrency' => 'IRT',
+                    'availability' => $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+                    'url' => get_permalink($post->ID),
+                    'seller' => array('@id' => home_url('/#organization'))
+                )
+            );
+            if ($product->get_image_id()) {
+                $img = wp_get_attachment_image_src($product->get_image_id(), 'full');
+                if ($img) $prod_schema['image'] = $img[0];
+            }
+            $schema_graph[] = $prod_schema;
+        }
+    }
+
+    $final_schema = array(
+        '@context' => 'https://schema.org',
+        '@graph'   => $schema_graph
+    );
+
+    echo '<script type="application/ld+json">' . json_encode($final_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
+}
+
+// 6. Automated WooCommerce Sample Data Seeder (Vintage & Retro Decor)
+function basate_nab_seed_products_if_empty() {
+    if (!class_exists('WooCommerce')) return;
+    if (get_option('basate_nab_sample_products_installed') === '1') return;
+
+    $existing = wc_get_products(array('limit' => 1));
+    if (!empty($existing)) {
+        update_option('basate_nab_sample_products_installed', '1');
+        return;
+    }
+
+    $items = array(
+        array(
+            'name' => 'آباژور رومیزی برنجی طرح لاله عباسی کهنه‌کاری',
+            'desc' => 'آباژور رومیزی دست‌ساز با بدنه تمام برنجی پتینه‌کاری شده و کلاهک پارچه‌ای دست‌دوز. مناسب برای میز تحریر، کنسول و اتاق خواب در دکوراسیون وینتیج و کلاسیک.',
+            'price' => '1850000',
+            'regular' => '2200000',
+            'cat' => 'آباژور رومیزی'
+        ),
+        array(
+            'name' => 'آباژور سالنی پایه چوب گردو با شید کتان دست‌دوز',
+            'desc' => 'آباژور ایستاده کنارسالنی با چوب طبیعی گردوی تیره کهنه‌کاری شده، سرپیچ برنجی استاندارد E27 و سیم‌کشی ابریشمی عایق رترو.',
+            'price' => '3450000',
+            'regular' => '3900000',
+            'cat' => 'آباژور سالنی'
+        ),
+        array(
+            'name' => 'چراغ رومیزی صنعتی رترو با لامپ ادیسونی دیمردار',
+            'desc' => 'چراغ دکوراتیو سبک اینداستریال با لوله‌های آبکاری شده برنزی، کلید قطع و وصل گردان پیانویی و لامپ ادیسونی فیلامنتی کهربایی.',
+            'price' => '1290000',
+            'regular' => '1550000',
+            'cat' => 'چراغ رترو'
+        ),
+        array(
+            'name' => 'تابلو رترو فلزی دیواری طرح نوستالژیک کلاسیک ۱۹۶۰',
+            'desc' => 'پلاک دیواری تمام فلزی برجسته با چاپ کوره ای باکیفیت و لبه‌های کهنه‌کاری شده زنگاردار. مناسب برای کافه، اتاق کار و گالری.',
+            'price' => '480000',
+            'regular' => '590000',
+            'cat' => 'تابلوهای رترو'
+        ),
+        array(
+            'name' => 'گرامافون شیپوری برنجی آنتیک با موتور هندلی اصل',
+            'desc' => 'گرامافون کلاسیک شیپور برنجی کار دست با جعبه چوب بلوط منبت‌کاری شده. قابلیت پخش صفحات سنگی و دکوری بی‌نظیر برای سالن پذیرایی.',
+            'price' => '8900000',
+            'regular' => '9800000',
+            'cat' => 'گرامافون و آنتیک'
+        ),
+        array(
+            'name' => 'رادیو ترانزیستوری چوبی رترو بلوتوث‌دار شارژی',
+            'desc' => 'طراحی بدنه نوستالژیک دهه ۵۰ خورشیدی با امواج رادیویی AM/FM، خروجی صدای گرم، باتری لیتیومی شارژی و اتصال بی‌سیم بلوتوث.',
+            'price' => '2150000',
+            'regular' => '2400000',
+            'cat' => 'رادیو کلاسیک'
+        ),
+        array(
+            'name' => 'ساعت رومیزی زنگ‌دار مکانیکی برنجی انگلیسی',
+            'desc' => 'ساعت کوکی زنگ‌دار رومیزی سنگین با چرخ‌دنده‌های برنجی مرغوب و شیشه محدب. صدای تیک‌تاک نوستالژیک و ماندگار.',
+            'price' => '1650000',
+            'regular' => '1950000',
+            'cat' => 'ساعت رترو'
+        ),
+        array(
+            'name' => 'ظرف میوه‌خوری پایه‌دار برنجی آنتیک طرح گل و مرغ',
+            'desc' => 'ظرف پذیرایی آنتیک تمام برنج با قلم‌زنی استادانه و سیاه قلم ظریف. بسیار چشم‌نواز و ارزشمند برای بوفه و دکوراسیون کهنه‌کاری.',
+            'price' => '2750000',
+            'regular' => '3100000',
+            'cat' => 'ظروف آنتیک'
+        ),
+    );
+
+    foreach ($items as $item) {
+        $p = new WC_Product_Simple();
+        $p->set_name($item['name']);
+        $p->set_description($item['desc']);
+        $p->set_short_description($item['desc']);
+        $p->set_status('publish');
+        $p->set_regular_price($item['regular']);
+        $p->set_sale_price($item['price']);
+        $p->set_price($item['price']);
+        $p->set_manage_stock(false);
+        $p->set_stock_status('instock');
+
+        // category
+        $term = term_exists($item['cat'], 'product_cat');
+        if (!$term) {
+            $term = wp_insert_term($item['cat'], 'product_cat');
+        }
+        if (!is_wp_error($term)) {
+            $term_id = is_array($term) ? $term['term_id'] : $term;
+            $p->set_category_ids(array($term_id));
+        }
+
+        $p->save();
+    }
+
+    update_option('basate_nab_sample_products_installed', '1');
+}
+add_action('init', 'basate_nab_seed_products_if_empty');
+
+// 7. Attach Featured Thumbnails to Sample Products
+function basate_nab_attach_sample_thumbnails() {
+    if (get_option('basate_nab_sample_thumbnails_set') === '1') return;
+    $map = array(
+        19 => 27, // آباژور رومیزی -> vintage_table_lamp
+        20 => 28, // آباژور سالنی -> vintage_floor_lamp
+        21 => 27, // چراغ صنعتی رترو -> vintage_table_lamp
+        22 => 30, // تابلو رترو -> retro_wooden_radio / art
+        23 => 29, // گرامافون -> antique_gramophone
+        24 => 30, // رادیو -> retro_wooden_radio
+        25 => 29, // ساعت -> antique_gramophone / clock
+        26 => 29  // ظرف برنجی -> antique_gramophone
+    );
+    foreach ($map as $pid => $mid) {
+        if (get_post($pid) && get_post($mid)) {
+            set_post_thumbnail($pid, $mid);
+        }
+    }
+    update_option('basate_nab_sample_thumbnails_set', '1');
+}
+add_action('init', 'basate_nab_attach_sample_thumbnails');
+
+
