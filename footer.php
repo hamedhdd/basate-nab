@@ -35,7 +35,7 @@
                 <ul class="footer-links-list">
                     <li>
                         <strong>تلفن و مشاوره:</strong>
-                        <a href="tel:09198321361" dir="ltr">0919 832 1361</a>
+                        <span>—</span>
                     </li>
                     <li>
                         <strong>سفارش آنلاین اینستاگرام:</strong>

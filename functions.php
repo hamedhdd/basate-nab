@@ -218,16 +218,19 @@ function basate_nab_schema_jsonld() {
                 'brand' => array(
                     '@type' => 'Brand',
                     'name' => 'بساط ناب'
-                ),
-                'offers' => array(
+                )
+            );
+            $p_price = $product->get_price();
+            if (!empty($p_price)) {
+                $prod_schema['offers'] = array(
                     '@type' => 'Offer',
-                    'price' => $product->get_price(),
+                    'price' => $p_price,
                     'priceCurrency' => 'IRT',
                     'availability' => $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
                     'url' => get_permalink($post->ID),
                     'seller' => array('@id' => home_url('/#organization'))
-                )
-            );
+                );
+            }
             if ($product->get_image_id()) {
                 $img = wp_get_attachment_image_src($product->get_image_id(), 'full');
                 if ($img) $prod_schema['image'] = $img[0];
@@ -395,5 +398,45 @@ function basate_nab_sync_authentic_instagram_products() {
     update_option('basate_nab_real_ig_products_synced_v3', '1');
 }
 add_action('init', 'basate_nab_sync_authentic_instagram_products');
+
+// 7. Remove/Hide Prices Globally (per user instruction)
+add_filter('woocommerce_get_price_html', '__return_empty_string', 99, 2);
+
+// Single Product Page: Inquire Box instead of Add to Cart
+add_action('woocommerce_single_product_summary', 'basate_nab_render_inquiry_box_on_single', 30);
+function basate_nab_render_inquiry_box_on_single() {
+    echo '<div class="product-inquire-box" style="margin:24px 0; padding:18px 22px; background:linear-gradient(135deg, #fcf9f3, #f5ecd9); border:1px solid #dfceb7; border-radius:12px;">';
+    echo '<p style="margin:0 0 10px; font-weight:700; color:#231709; font-size:0.95rem;">جهت استعلام موجودی، اطلاعات بیشتر و ثبت سفارش این اثر وینتیج:</p>';
+    echo '<a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener" class="btn-primary-retro" style="display:inline-flex; align-items:center; gap:8px; padding:10px 22px; width:fit-content;">';
+    echo '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>';
+    echo '<span>استعلام و ثبت سفارش در دایرکت @basate_nab</span>';
+    echo '</a>';
+    echo '</div>';
+}
+
+// 8. Clear all numerical prices from WooCommerce database products
+function basate_nab_clear_product_prices_db() {
+    if (get_option('basate_nab_prices_cleared_done') === '1') return;
+    if (!class_exists('WooCommerce')) return;
+
+    $products = wc_get_products(array('limit' => -1));
+    foreach ($products as $p) {
+        $p->set_regular_price('');
+        $p->set_sale_price('');
+        $p->set_price('');
+        $p->save();
+    }
+    update_option('basate_nab_prices_cleared_done', '1');
+}
+add_action('init', 'basate_nab_clear_product_prices_db');
+
+// 9. Disable WooCommerce Coming Soon mode so store and product pages are publicly live
+function basate_nab_disable_coming_soon() {
+    if (get_option('woocommerce_coming_soon') === 'yes') {
+        update_option('woocommerce_coming_soon', 'no');
+        update_option('woocommerce_store_pages_only', 'no');
+    }
+}
+add_action('init', 'basate_nab_disable_coming_soon');
 
 

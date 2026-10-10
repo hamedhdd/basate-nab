@@ -5,6 +5,26 @@ All notable changes to the **Basate Nab** WordPress Theme project will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-10-10
+
+### Changed
+- **Contact Info & Inquiries**:
+  - Temporarily removed phone numbers from top announcement bar, mobile drawer, footer, and promotional banners (leaving fields empty as requested pending future update).
+  - Directed customer consultations and inquiries directly to Instagram Direct (`@basate_nab`).
+
+### Removed
+- **Product Prices & Sale Badges**:
+  - Removed all product price figures and Toman currency amounts across the storefront.
+  - Removed discount percentage badges from product cards.
+  - Cleared numerical prices from the WooCommerce product catalog database.
+  - Added global filter `woocommerce_get_price_html` returning empty string across shop archives and product views.
+
+### Added
+- **Catalog Inquiries CTA**:
+  - Added dedicated product inquiry banner on single product views (`woocommerce_single_product_summary`) linking to Instagram direct `@basate_nab`.
+  - Replaced product card cart buttons with "مشاهده و جزئیات" linking to the product page.
+  - Updated JSON-LD structured data engine to omit price offers when products are unpriced.
+
 ## [1.1.0] - 2026-10-10
 
 ### Added

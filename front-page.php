@@ -138,8 +138,8 @@ get_header();
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 </div>
                 <div class="offer-title">
-                    <h3>پیشنهاد ویژه و شگفت‌انگیز عتیقه</h3>
-                    <p>تخفیف استثنایی روی منتخبی از آباژورها و دکوراتیوهای تک‌نسخه</p>
+                    <h3>ویترین عتیقه‌جات و آباژورهای تک‌نسخه</h3>
+                    <p>جهت استعلام موجودی، قیمت و ثبت سفارش با ما در ارتباط باشید</p>
                 </div>
             </div>
             <div class="countdown-box">
@@ -189,13 +189,13 @@ get_header();
                         $regular_price = $product->get_regular_price();
                         $is_on_sale = $product->is_on_sale();
                         $discount_percent = 0;
-                        if ($is_on_sale && $regular_price > 0) {
+                        if ($is_on_sale && $regular_price > 0 && !empty($price)) {
                             $discount_percent = round((($regular_price - $price) / $regular_price) * 100);
                         }
                         ?>
                         <article class="retro-product-card">
                             <div class="product-thumb-wrapper">
-                                <?php if ($is_on_sale) : ?>
+                                <?php if ($is_on_sale && !empty($price)) : ?>
                                     <span class="badge-discount"><?php echo basate_fa_num($discount_percent); ?>٪ تخفیف</span>
                                 <?php endif; ?>
                                 <span class="badge-antique">وینتیج</span>
@@ -223,20 +223,33 @@ get_header();
                                 </div>
                                 <div>
                                     <div class="product-pricing-row">
-                                        <div class="product-price-current">
-                                            <?php echo basate_fa_num(number_format((float)$price)); ?> <span class="currency">تومان</span>
-                                        </div>
-                                        <?php if ($is_on_sale && $regular_price) : ?>
-                                            <div class="product-price-regular">
-                                                <?php echo basate_fa_num(number_format((float)$regular_price)); ?>
+                                        <?php if (!empty($price)) : ?>
+                                            <div class="product-price-current">
+                                                <?php echo basate_fa_num(number_format((float)$price)); ?> <span class="currency">تومان</span>
+                                            </div>
+                                            <?php if ($is_on_sale && $regular_price) : ?>
+                                                <div class="product-price-regular">
+                                                    <?php echo basate_fa_num(number_format((float)$regular_price)); ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php else : ?>
+                                            <div class="product-price-current">
+                                                <span class="price-on-request" style="font-size:0.85rem; color:var(--color-primary); font-weight:700;">استعلام قیمت در دایرکت</span>
                                             </div>
                                         <?php endif; ?>
                                     </div>
                                     <div class="product-card-cta">
-                                        <a href="<?php echo esc_url($product->add_to_cart_url()); ?>" class="btn-add-cart-card">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                                            افزودن به سبد خرید
-                                        </a>
+                                        <?php if (!empty($price)) : ?>
+                                            <a href="<?php echo esc_url($product->add_to_cart_url()); ?>" class="btn-add-cart-card">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                                                افزودن به سبد خرید
+                                            </a>
+                                        <?php else : ?>
+                                            <a href="<?php the_permalink(); ?>" class="btn-add-cart-card">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                                                مشاهده و جزئیات
+                                            </a>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
@@ -258,7 +271,6 @@ get_header();
                     foreach ($samples as $s) : ?>
                         <article class="retro-product-card">
                             <div class="product-thumb-wrapper">
-                                <span class="badge-discount">۱۵٪ تخفیف</span>
                                 <span class="badge-antique">وینتیج</span>
                                 <div style="display:flex; align-items:center; justify-content:center; width:100%; height:100%; background:linear-gradient(135deg, #f7f1e6, #ebdcc7); color:#7d6b58;">
                                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2h6l3 7H6l3-7z"/><path d="M12 9v9"/><path d="M8 22h8"/></svg>
@@ -274,16 +286,13 @@ get_header();
                                 <div>
                                     <div class="product-pricing-row">
                                         <div class="product-price-current">
-                                            <?php echo basate_fa_num(number_format($s['price'])); ?> <span class="currency">تومان</span>
-                                        </div>
-                                        <div class="product-price-regular">
-                                            <?php echo basate_fa_num(number_format($s['old'])); ?>
+                                            <span class="price-on-request" style="font-size:0.85rem; color:var(--color-primary); font-weight:700;">استعلام قیمت در دایرکت</span>
                                         </div>
                                     </div>
                                     <div class="product-card-cta">
                                         <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>" class="btn-add-cart-card">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                                            افزودن به سبد خرید
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                                            مشاهده و جزئیات
                                         </a>
                                     </div>
                                 </div>
@@ -299,8 +308,8 @@ get_header();
             <div class="promo-banner-card bg-walnut">
                 <h4>طراحی اختصاصی آباژور به سفارش مشتری</h4>
                 <p>امکان تغییر رنگ کلاهک، جنس پایه و نوع سرپیچ متناسب با تم دکوراسیون منزل شما</p>
-                <a href="tel:09198321361" class="btn-primary-retro" style="width:fit-content; padding:8px 20px; font-size:0.85rem;">
-                    سفارش تلفنی و مشاوره
+                <a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener" class="btn-primary-retro" style="width:fit-content; padding:8px 20px; font-size:0.85rem;">
+                    مشاوره و سفارش در دایرکت
                 </a>
             </div>
             <div class="promo-banner-card bg-cream">
@@ -316,7 +325,7 @@ get_header();
         <section class="trust-badges-grid">
             <div class="trust-badge-card">
                 <div class="trust-icon-box">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
                 </div>
                 <div class="trust-info">
                     <h4>ارسال ایمن و بیمه‌شده</h4>
@@ -347,7 +356,7 @@ get_header();
                 </div>
                 <div class="trust-info">
                     <h4>مشاوره چیدمان دکور</h4>
-                    <p>پشتیبانی مستقیم در واتساپ و تماس</p>
+                    <p>پشتیبانی مستقیم در دایرکت اینستاگرام</p>
                 </div>
             </div>
         </section>
