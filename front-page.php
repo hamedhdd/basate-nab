@@ -176,7 +176,7 @@ get_header();
                 // Fetch real WooCommerce products
                 $args = array(
                     'post_type'      => 'product',
-                    'posts_per_page' => 8,
+                    'posts_per_page' => 12,
                     'orderby'        => 'date',
                     'order'          => 'DESC'
                 );
@@ -359,13 +359,28 @@ get_header();
                 <p>جدیدترین آنتیک‌های وارداتی، ویدیوهای تست سلامت و استوری‌های تخفیف روزانه را در پیج دنبال کنید</p>
             </div>
             <div class="instagram-gallery-grid">
-                <?php for ($i = 1; $i <= 6; $i++) : ?>
-                    <a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener" class="instagram-img-slot" title="مشاهده پست در اینستاگرام">
-                        <div style="display:flex; align-items:center; justify-content:center; width:100%; height:100%; background:linear-gradient(135deg, #eee3d1, #dfceb7); color:#7c6954;">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
-                        </div>
+                <?php 
+                $ig_posts = array(
+                    array('id' => 32, 'file' => 'ig_product_1.jpg'),
+                    array('id' => 33, 'file' => 'ig_product_2.jpg'),
+                    array('id' => 34, 'file' => 'ig_product_3.jpg'),
+                    array('id' => 35, 'file' => 'ig_product_4.jpg'),
+                    array('id' => 39, 'file' => 'ig_product_8.jpg'),
+                    array('id' => 40, 'file' => 'ig_product_12.jpg'),
+                );
+                foreach ($ig_posts as $post_img) :
+                    $img_url = wp_get_attachment_image_url($post_img['id'], 'medium_large');
+                    if (!$img_url) {
+                        $img_url = wp_get_attachment_image_url($post_img['id'], 'full');
+                    }
+                    if (!$img_url) {
+                        $img_url = get_template_directory_uri() . '/assets/images/instagram_products/' . $post_img['file'];
+                    }
+                ?>
+                    <a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener" class="instagram-img-slot" title="مشاهده محصول در اینستاگرام @basate_nab">
+                        <img src="<?php echo esc_url($img_url); ?>" alt="محصولات اینستاگرام بساط ناب" loading="lazy" />
                     </a>
-                <?php endfor; ?>
+                <?php endforeach; ?>
             </div>
             <a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener" class="instagram-cta-btn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>

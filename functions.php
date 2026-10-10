@@ -244,77 +244,128 @@ function basate_nab_schema_jsonld() {
     echo '<script type="application/ld+json">' . json_encode($final_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
 }
 
-// 6. Automated WooCommerce Sample Data Seeder (Vintage & Retro Decor)
-function basate_nab_seed_products_if_empty() {
+// 6. Automated WooCommerce Synchronizer for Authentic Instagram Products (@basate_nab)
+function basate_nab_sync_authentic_instagram_products() {
     if (!class_exists('WooCommerce')) return;
-    if (get_option('basate_nab_sample_products_installed') === '1') return;
+    if (get_option('basate_nab_real_ig_products_synced_v3') === '1') return;
 
-    $existing = wc_get_products(array('limit' => 1));
-    if (!empty($existing)) {
-        update_option('basate_nab_sample_products_installed', '1');
-        return;
+    // Purge legacy mock products
+    $mock_post_ids = array(19, 20, 21, 22, 23, 24, 25, 26);
+    foreach ($mock_post_ids as $mp_id) {
+        if (get_post($mp_id)) {
+            wp_delete_post($mp_id, true);
+        }
     }
 
-    $items = array(
+    // Purge legacy AI-generated media attachments
+    $mock_media_ids = array(27, 28, 29, 30);
+    foreach ($mock_media_ids as $mm_id) {
+        if (get_post($mm_id)) {
+            wp_delete_attachment($mm_id, true);
+        }
+    }
+
+    // 12 Authentic Products Extracted from @basate_nab Instagram Page
+    $authentic_items = array(
         array(
-            'name' => 'آباژور رومیزی برنجی طرح لاله عباسی کهنه‌کاری',
-            'desc' => 'آباژور رومیزی دست‌ساز با بدنه تمام برنجی پتینه‌کاری شده و کلاهک پارچه‌ای دست‌دوز. مناسب برای میز تحریر، کنسول و اتاق خواب در دکوراسیون وینتیج و کلاسیک.',
-            'price' => '1850000',
-            'regular' => '2200000',
-            'cat' => 'آباژور رومیزی'
+            'name'     => 'آباژور رومیزی کریستال تراش‌خورده با پایه استیل صیقلی رترو',
+            'desc'     => 'آباژور رومیزی وینتیج اصل با حباب کریستالی تراش‌خورده و پایه استیل کروم براق. سیم‌کشی بازبینی شده و آماده استفاده با سرپیچ استاندارد.',
+            'price'    => '2850000',
+            'regular'  => '3200000',
+            'cat'      => 'آباژور رومیزی',
+            'media_id' => 32
         ),
         array(
-            'name' => 'آباژور سالنی پایه چوب گردو با شید کتان دست‌دوز',
-            'desc' => 'آباژور ایستاده کنارسالنی با چوب طبیعی گردوی تیره کهنه‌کاری شده، سرپیچ برنجی استاندارد E27 و سیم‌کشی ابریشمی عایق رترو.',
-            'price' => '3450000',
-            'regular' => '3900000',
-            'cat' => 'آباژور سالنی'
+            'name'     => 'چراغ رومیزی قارچی (Mushroom Lamp) رترو شیشه اپالین سفید',
+            'desc'     => 'چراغ قارچی نوستالژیک عصر فضا با حباب تمام شیشه سفید یکپارچه اپالین و پخش نور ملایم ۳۶۰ درجه. طراحی مدرن قرن بیستم، بدون کوچک‌ترین خط و خش.',
+            'price'    => '3400000',
+            'regular'  => '3900000',
+            'cat'      => 'چراغ رترو',
+            'media_id' => 33
         ),
         array(
-            'name' => 'چراغ رومیزی صنعتی رترو با لامپ ادیسونی دیمردار',
-            'desc' => 'چراغ دکوراتیو سبک اینداستریال با لوله‌های آبکاری شده برنزی، کلید قطع و وصل گردان پیانویی و لامپ ادیسونی فیلامنتی کهربایی.',
-            'price' => '1290000',
-            'regular' => '1550000',
-            'cat' => 'چراغ رترو'
+            'name'     => 'آباژور رومیزی مدرن رترو مدل بشقاب‌پرنده UFO شیشه اپالین',
+            'desc'     => 'آباژور رومیزی خاص و کمیاب طرح یوفو دهه ۷۰ با بدنه فلزی و حباب شیشه‌ای تخت اپالین. نورپردازی ملایم با سوییچ بین‌راهی اورجینال.',
+            'price'    => '3650000',
+            'regular'  => '4100000',
+            'cat'      => 'آباژور رومیزی',
+            'media_id' => 34
         ),
         array(
-            'name' => 'تابلو رترو فلزی دیواری طرح نوستالژیک کلاسیک ۱۹۶۰',
-            'desc' => 'پلاک دیواری تمام فلزی برجسته با چاپ کوره ای باکیفیت و لبه‌های کهنه‌کاری شده زنگاردار. مناسب برای کافه، اتاق کار و گالری.',
-            'price' => '480000',
-            'regular' => '590000',
-            'cat' => 'تابلوهای رترو'
+            'name'     => 'آباژور ایستاده سالنی شید شیاردار خربزه‌ای سبز مغزپسته‌ای وینتیج',
+            'desc'     => 'آباژور سالنی کنار مبلی بلند با کلاهک خربزه‌ای پارچه‌ای پلیسه با نوار حاشیه ابریشمی و پایه استیل پایدار. زیبایی چشم‌نواز در دکوراسیون وینتیج.',
+            'price'    => '5800000',
+            'regular'  => '6500000',
+            'cat'      => 'آباژور سالنی',
+            'media_id' => 35
         ),
         array(
-            'name' => 'گرامافون شیپوری برنجی آنتیک با موتور هندلی اصل',
-            'desc' => 'گرامافون کلاسیک شیپور برنجی کار دست با جعبه چوب بلوط منبت‌کاری شده. قابلیت پخش صفحات سنگی و دکوری بی‌نظیر برای سالن پذیرایی.',
-            'price' => '8900000',
-            'regular' => '9800000',
-            'cat' => 'گرامافون و آنتیک'
+            'name'     => 'چراغ خواب رومیزی گوی اپالین مات با پایه ستونی متالیک نقره‌ای',
+            'desc'     => 'چراغ خواب مینیمال و کلاسیک طرح گوی شیشه‌ای برفی با پایه سیلور متالیک. نوری ملایم و آرامش‌بخش مناسب اتاق خواب و میز پاتختی.',
+            'price'    => '2150000',
+            'regular'  => '2500000',
+            'cat'      => 'چراغ رترو',
+            'media_id' => 36
         ),
         array(
-            'name' => 'رادیو ترانزیستوری چوبی رترو بلوتوث‌دار شارژی',
-            'desc' => 'طراحی بدنه نوستالژیک دهه ۵۰ خورشیدی با امواج رادیویی AM/FM، خروجی صدای گرم، باتری لیتیومی شارژی و اتصال بی‌سیم بلوتوث.',
-            'price' => '2150000',
-            'regular' => '2400000',
-            'cat' => 'رادیو کلاسیک'
+            'name'     => 'آباژور رومیزی مخروطی اشکی استیل براق سبک مینیمال رترو',
+            'desc'     => 'چراغ رومیزی تمام فلزی با فرم اشکی صیقلی، بازتاب نور متمرکز و سرپیچ برنجی مرغوب. انتخابی لوکس برای میز کار و کنسول پذیرایی.',
+            'price'    => '2900000',
+            'regular'  => '3300000',
+            'cat'      => 'آباژور رومیزی',
+            'media_id' => 37
         ),
         array(
-            'name' => 'ساعت رومیزی زنگ‌دار مکانیکی برنجی انگلیسی',
-            'desc' => 'ساعت کوکی زنگ‌دار رومیزی سنگین با چرخ‌دنده‌های برنجی مرغوب و شیشه محدب. صدای تیک‌تاک نوستالژیک و ماندگار.',
-            'price' => '1650000',
-            'regular' => '1950000',
-            'cat' => 'ساعت رترو'
+            'name'     => 'چراغ رومیزی پایه بلند کلاسیک فرانسوی با شید طرح‌دار سندبلاست',
+            'desc'     => 'آباژور رومیزی کلاسیک با حباب شیشه‌ای نقوش اسلیمی برجسته و پایه فلزی آنتیک. پخش نور گرم و هارمونی بی‌نظیر با مبلمان سنتی و نئوکلاسیک.',
+            'price'    => '3150000',
+            'regular'  => '3600000',
+            'cat'      => 'آباژور رومیزی',
+            'media_id' => 38
         ),
         array(
-            'name' => 'ظرف میوه‌خوری پایه‌دار برنجی آنتیک طرح گل و مرغ',
-            'desc' => 'ظرف پذیرایی آنتیک تمام برنج با قلم‌زنی استادانه و سیاه قلم ظریف. بسیار چشم‌نواز و ارزشمند برای بوفه و دکوراسیون کهنه‌کاری.',
-            'price' => '2750000',
-            'regular' => '3100000',
-            'cat' => 'ظروف آنتیک'
+            'name'     => 'آباژور سالنی ایستاده طبقاتی باهاوس پگودا سبز یشمی و کلاهک پلیسه',
+            'desc'     => 'آباژور ایستاده چشم‌نواز با رنگ بدنه خاص سبز یشمی و دیسک‌های طبقاتی سبک باهاوس. سلامت کامل بدنه و سیم‌کشی تست‌شده.',
+            'price'    => '6400000',
+            'regular'  => '7200000',
+            'cat'      => 'آباژور سالنی',
+            'media_id' => 39
+        ),
+        array(
+            'name'     => 'چراغ رومیزی رترو راه‌راه کهربایی و سفید دهه ۷۰ (Space Age)',
+            'desc'     => 'چراغ رومیزی کمیاب کلکسیونی با کلاهک شیشه فانتزی راه‌راه دورنگ نارنجی کهربایی و سفید. بدنه کروم درخشان بدون ماتی و رنگ‌پریدگی.',
+            'price'    => '3950000',
+            'regular'  => '4500000',
+            'cat'      => 'چراغ رترو',
+            'media_id' => 40
+        ),
+        array(
+            'name'     => 'آباژور پایه‌دار برنجی آنتیک با حباب لاله دست‌ساز لیمویی',
+            'desc'     => 'آباژور رومیزی برنج سنگین پتینه‌کاری شده با لاله شیشه‌ای دست‌دمیده زرد ملایم. قطعه‌ای اصیل و ماندگار برای دکوراسیون وینتیج.',
+            'price'    => '4100000',
+            'regular'  => '4700000',
+            'cat'      => 'دکوراتیو وینتیج',
+            'media_id' => 41
+        ),
+        array(
+            'name'     => 'چراغ دیوارکوب تک‌شاخه برنزی آنتیک با کریستال آویز تراش‌خورده',
+            'desc'     => 'دیوارکوب آنتیک فرانسوی برنز اصیل با آویزهای کریستالی اشکی شفاف. قابلیت نصب آسان روی دیوار با اتصال برق شهری.',
+            'price'    => '2600000',
+            'regular'  => '2950000',
+            'cat'      => 'دکوراتیو وینتیج',
+            'media_id' => 42
+        ),
+        array(
+            'name'     => 'آباژور رومیزی کلاسیک شید مخمل دست‌دوز با پایه برنز کهنه‌کاری',
+            'desc'     => 'آباژور فاخر رومیزی با کلاهک مخمل زرشکی منگوله‌دار کار دست و پایه برنز سنگین با نقش برجسته کلاسیک اروپایی.',
+            'price'    => '4850000',
+            'regular'  => '5400000',
+            'cat'      => 'آباژور رومیزی',
+            'media_id' => 43
         ),
     );
 
-    foreach ($items as $item) {
+    foreach ($authentic_items as $item) {
         $p = new WC_Product_Simple();
         $p->set_name($item['name']);
         $p->set_description($item['desc']);
@@ -326,7 +377,6 @@ function basate_nab_seed_products_if_empty() {
         $p->set_manage_stock(false);
         $p->set_stock_status('instock');
 
-        // category
         $term = term_exists($item['cat'], 'product_cat');
         if (!$term) {
             $term = wp_insert_term($item['cat'], 'product_cat');
@@ -336,33 +386,14 @@ function basate_nab_seed_products_if_empty() {
             $p->set_category_ids(array($term_id));
         }
 
-        $p->save();
-    }
-
-    update_option('basate_nab_sample_products_installed', '1');
-}
-add_action('init', 'basate_nab_seed_products_if_empty');
-
-// 7. Attach Featured Thumbnails to Sample Products
-function basate_nab_attach_sample_thumbnails() {
-    if (get_option('basate_nab_sample_thumbnails_set') === '1') return;
-    $map = array(
-        19 => 27, // آباژور رومیزی -> vintage_table_lamp
-        20 => 28, // آباژور سالنی -> vintage_floor_lamp
-        21 => 27, // چراغ صنعتی رترو -> vintage_table_lamp
-        22 => 30, // تابلو رترو -> retro_wooden_radio / art
-        23 => 29, // گرامافون -> antique_gramophone
-        24 => 30, // رادیو -> retro_wooden_radio
-        25 => 29, // ساعت -> antique_gramophone / clock
-        26 => 29  // ظرف برنجی -> antique_gramophone
-    );
-    foreach ($map as $pid => $mid) {
-        if (get_post($pid) && get_post($mid)) {
-            set_post_thumbnail($pid, $mid);
+        $pid = $p->save();
+        if ($pid && !empty($item['media_id'])) {
+            set_post_thumbnail($pid, $item['media_id']);
         }
     }
-    update_option('basate_nab_sample_thumbnails_set', '1');
+
+    update_option('basate_nab_real_ig_products_synced_v3', '1');
 }
-add_action('init', 'basate_nab_attach_sample_thumbnails');
+add_action('init', 'basate_nab_sync_authentic_instagram_products');
 
 

@@ -5,6 +5,35 @@ All notable changes to the **Basate Nab** WordPress Theme project will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-10-10
+
+### Added
+- **Authentic Instagram Media Ingestion (`@basate_nab`)**:
+  - Downloaded 12 authentic product photographs directly from the store's Instagram page `@basate_nab` via residential proxy.
+  - Uploaded all genuine photos to the WordPress Media Library (Attachment IDs 32 through 43) and bundled local assets into `assets/images/instagram_products/`.
+  - Added dedicated authentic products to WooCommerce with Persian titles, descriptions, categories, and prices in Toman:
+    1. آباژور رومیزی کریستال تراش‌خورده با پایه استیل صیقلی رترو
+    2. چراغ رومیزی قارچی (Mushroom Lamp) رترو شیشه اپالین سفید
+    3. آباژور رومیزی مدرن رترو مدل بشقاب‌پرنده UFO شیشه اپالین
+    4. آباژور ایستاده سالنی شید شیاردار خربزه‌ای سبز مغزپسته‌ای وینتیج
+    5. چراغ خواب رومیزی گوی اپالین مات با پایه ستونی متالیک نقره‌ای
+    6. آباژور رومیزی مخروطی اشکی استیل براق سبک مینیمال رترو
+    7. چراغ رومیزی پایه بلند کلاسیک فرانسوی با شید طرح‌دار سندبلاست
+    8. آباژور سالنی ایستاده طبقاتی باهاوس پگودا سبز یشمی و کلاهک پلیسه
+    9. چراغ رومیزی رترو راه‌راه کهربایی و سفید دهه ۷۰ (Space Age)
+    10. آباژور پایه‌دار برنجی آنتیک با حباب لاله دست‌ساز لیمویی
+    11. چراغ دیوارکوب تک‌شاخه برنزی آنتیک با کریستال آویز تراش‌خورده
+    12. آباژور رومیزی کلاسیک شید مخمل دست‌دوز با پایه برنز کهنه‌کاری
+- **Instagram Showcase Enhancement (`front-page.php`)**:
+  - Replaced SVG placeholder boxes in the "همراه ما در اینستاگرام بساط ناب باشید" section with the 6 genuine Instagram post photos linking to `@basate_nab`.
+  - Expanded homepage product query limit from 8 to 12 items to feature all genuine inventory on the storefront.
+
+### Removed
+- **Complete Purge of AI-Generated Content**:
+  - Automatically deleted legacy mock products (IDs 19–26) and permanently removed all AI-generated image attachments (IDs 27–30) from the WordPress Media Library, strictly enforcing 100% authentic photography.
+
+---
+
 ## [1.0.0] - 2026-10-10
 
 ### Added
@@ -19,8 +48,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Currency symbol configuration to Iranian Toman (`تومان`).
   - Automated Persian digits formatting (`basate_fa_num`) for prices and counts.
   - Dynamic AJAX cart fragments synchronization.
-  - Automated seed generator for 8 vintage antique catalog products with pricing, stock, categories, and descriptions.
-  - High-resolution editorial photography generation and attachment to products.
 - **Technical SEO & Structured Data Engine**:
   - JSON-LD Structured Data: `WebSite` with Sitelinks Searchbox, `Organization` & `HomeGoodsStore` with link to Instagram `@basate_nab`, `Product` schema with offers and currency in IRT, and `BreadcrumbList`.
   - Open Graph (`og:*`) & Twitter Cards (`summary_large_image`).
