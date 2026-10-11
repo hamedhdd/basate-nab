@@ -8,19 +8,22 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-do_action('woocommerce_before_customer_login_form'); ?>
+do_action('woocommerce_before_customer_login_form'); 
 
-<div class="auth-page-wrapper">
-    <!-- Quick Nav Toggle for Mobile / Quick Jumping -->
+$initial_tab = (isset($_POST['register']) || (isset($_GET['action']) && $_GET['action'] === 'register')) ? 'register' : 'login';
+?>
+
+<div class="auth-page-wrapper show-<?php echo esc_attr($initial_tab); ?>" id="auth-page-wrapper">
+    <!-- Quick Nav Toggle for Mobile & Quick Switching -->
     <div class="auth-tabs-nav">
-        <a href="#customer_login_col" class="auth-tab-btn active" id="tab-login-btn">
+        <button type="button" class="auth-tab-btn <?php echo ($initial_tab === 'login') ? 'active' : ''; ?>" id="tab-login-btn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
             <span>ورود به حساب کاربری</span>
-        </a>
-        <a href="#customer_register_col" class="auth-tab-btn" id="tab-register-btn">
+        </button>
+        <button type="button" class="auth-tab-btn <?php echo ($initial_tab === 'register') ? 'active' : ''; ?>" id="tab-register-btn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
             <span>عضویت و ثبت‌نام جدید</span>
-        </a>
+        </button>
     </div>
 
     <div class="u-columns col2-set auth-grid-container" id="customer_login">
@@ -72,7 +75,7 @@ do_action('woocommerce_before_customer_login_form'); ?>
 
                 <div class="auth-switch-footer d-md-none">
                     <span>حساب کاربری ندارید؟</span>
-                    <a href="#customer_register_col" class="auth-switch-link">ثبت‌نام و عضویت در سایت</a>
+                    <button type="button" class="auth-switch-link" id="switch-to-register-link">ثبت‌نام و عضویت در سایت</button>
                 </div>
 
                 <?php do_action('woocommerce_login_form_end'); ?>
@@ -126,7 +129,7 @@ do_action('woocommerce_before_customer_login_form'); ?>
 
                 <div class="auth-switch-footer d-md-none">
                     <span>قبلاً عضو شده‌اید؟</span>
-                    <a href="#customer_login_col" class="auth-switch-link">ورود به حساب کاربری</a>
+                    <button type="button" class="auth-switch-link" id="switch-to-login-link">ورود به حساب کاربری</button>
                 </div>
 
                 <?php do_action('woocommerce_register_form_end'); ?>

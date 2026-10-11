@@ -2370,9 +2370,47 @@ button, input, select, textarea {
 }
 
 .auth-switch-link {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
   color: var(--color-primary-hover);
   font-weight: 700;
   text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.auth-switch-link:hover {
+  color: var(--color-dark);
+}
+
+/* Tab Visibility Rules: Under 900px, display only the chosen active tab */
+@media (max-width: 899.98px) {
+  .auth-page-wrapper.show-login #customer_register_col {
+    display: none !important;
+  }
+  .auth-page-wrapper.show-login #customer_login_col {
+    display: block !important;
+  }
+  .auth-page-wrapper.show-register #customer_login_col {
+    display: none !important;
+  }
+  .auth-page-wrapper.show-register #customer_register_col {
+    display: block !important;
+  }
+}
+
+/* Desktop: 900px and wider, display both side-by-side */
+@media (min-width: 900px) {
+  .auth-page-wrapper #customer_login_col,
+  .auth-page-wrapper #customer_register_col {
+    display: block !important;
+  }
+  .auth-tabs-nav {
+    display: none;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -2385,15 +2423,20 @@ button, input, select, textarea {
   }
 
   .auth-tabs-nav {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
     width: 100%;
+    gap: 8px;
   }
 
   .auth-tab-btn {
-    width: 100%;
+    flex: 1;
+    padding: 10px 8px;
+    font-size: 0.8rem;
     justify-content: center;
     box-sizing: border-box;
   }
 }
+
 
 

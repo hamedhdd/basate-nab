@@ -178,71 +178,57 @@ function initMobileNavSync() {
 
 // 7. Customer Auth Tabs Switching (Login & Register)
 function initAuthTabs() {
+  const wrapper = document.getElementById('auth-page-wrapper');
   const loginTabBtn = document.getElementById('tab-login-btn');
   const registerTabBtn = document.getElementById('tab-register-btn');
-  const loginCol = document.getElementById('customer_login_col');
-  const registerCol = document.getElementById('customer_register_col');
+  const switchToRegisterLink = document.getElementById('switch-to-register-link');
+  const switchToLoginLink = document.getElementById('switch-to-login-link');
 
-  if (!loginTabBtn || !registerTabBtn || !loginCol || !registerCol) return;
+  if (!wrapper || !loginTabBtn || !registerTabBtn) return;
 
-  function showLogin() {
-    loginTabBtn.classList.add('active');
-    registerTabBtn.classList.remove('active');
-    if (window.innerWidth < 900) {
-      loginCol.style.display = 'block';
-      registerCol.style.display = 'none';
-    }
-  }
-
-  function showRegister() {
-    registerTabBtn.classList.add('active');
-    loginTabBtn.classList.remove('active');
-    if (window.innerWidth < 900) {
-      registerCol.style.display = 'block';
-      loginCol.style.display = 'none';
+  function setTab(tab) {
+    if (tab === 'register') {
+      wrapper.classList.remove('show-login');
+      wrapper.classList.add('show-register');
+      registerTabBtn.classList.add('active');
+      loginTabBtn.classList.remove('active');
+    } else {
+      wrapper.classList.remove('show-register');
+      wrapper.classList.add('show-login');
+      loginTabBtn.classList.add('active');
+      registerTabBtn.classList.remove('active');
     }
   }
 
   loginTabBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    showLogin();
+    setTab('login');
   });
 
   registerTabBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    showRegister();
+    setTab('register');
   });
 
-  document.querySelectorAll('.auth-switch-link').forEach(link => {
-    link.addEventListener('click', (e) => {
+  if (switchToRegisterLink) {
+    switchToRegisterLink.addEventListener('click', (e) => {
       e.preventDefault();
-      const target = link.getAttribute('href');
-      if (target === '#customer_register_col') {
-        showRegister();
-      } else {
-        showLogin();
-      }
-      const pageWrapper = document.querySelector('.auth-page-wrapper');
-      if (pageWrapper) {
-        window.scrollTo({ top: pageWrapper.offsetTop - 80, behavior: 'smooth' });
-      }
+      setTab('register');
+      window.scrollTo({ top: wrapper.offsetTop - 80, behavior: 'smooth' });
     });
-  });
-
-  function handleResize() {
-    if (window.innerWidth < 900) {
-      if (window.location.hash === '#customer_register_col') {
-        showRegister();
-      } else {
-        showLogin();
-      }
-    } else {
-      loginCol.style.display = '';
-      registerCol.style.display = '';
-    }
   }
 
-  handleResize();
-  window.addEventListener('resize', handleResize);
+  if (switchToLoginLink) {
+    switchToLoginLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      setTab('login');
+      window.scrollTo({ top: wrapper.offsetTop - 80, behavior: 'smooth' });
+    });
+  }
+
+  if (window.location.hash === '#customer_register_col' || window.location.search.includes('action=register')) {
+    setTab('register');
+  }
 }
+
 
