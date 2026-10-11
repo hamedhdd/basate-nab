@@ -125,6 +125,9 @@
                 <a href="<?php echo esc_url(home_url('/?s=ساعت&post_type=product')); ?>">
                     ساعت و گرامافون
                 </a>
+                <a href="<?php echo esc_url(home_url('/blog/')); ?>" class="<?php echo (is_page('blog') || is_home() || is_singular('post')) ? 'active' : ''; ?>">
+                    وبلاگ و دانشنامه
+                </a>
                 <a href="#special-offers" class="highlight">
                     ✨ ویترین آثار تک‌نسخه
                 </a>
@@ -160,6 +163,7 @@
             <li><a href="<?php echo esc_url(home_url('/?s=آنتیک&post_type=product')); ?>">🏺 ظروف و اشیای آنتیک</a></li>
             <li><a href="<?php echo esc_url(home_url('/?s=گرامافون&post_type=product')); ?>">📻 گرامافون و رادیوهای کلاسیک</a></li>
             <li><a href="<?php echo esc_url(home_url('/?s=ساعت&post_type=product')); ?>">⏰ ساعت‌های دیواری و رومیزی رترو</a></li>
+            <li><a href="<?php echo esc_url(home_url('/blog/')); ?>">📚 وبلاگ و راهنمای دکوراسیون وینتیج</a></li>
             <li><a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener">📸 پیج اینستاگرام @basate_nab</a></li>
             <li><a href="<?php echo esc_url($account_url); ?>">👤 حساب کاربری من</a></li>
         </ul>

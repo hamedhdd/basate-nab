@@ -249,6 +249,35 @@ function basate_nab_schema_jsonld() {
         }
     }
 
+    // 4. Article Schema on Single Blog Posts
+    if (is_singular('post')) {
+        global $post;
+        $article_schema = array(
+            '@type'            => 'BlogPosting',
+            '@id'              => get_permalink($post->ID) . '#article',
+            'headline'         => get_the_title($post->ID),
+            'description'      => wp_strip_all_tags(get_the_excerpt($post->ID) ?: $site_desc),
+            'url'              => get_permalink($post->ID),
+            'datePublished'    => get_the_date('c', $post->ID),
+            'dateModified'     => get_the_modified_date('c', $post->ID),
+            'inLanguage'       => 'fa-IR',
+            'mainEntityOfPage' => array(
+                '@type' => 'WebPage',
+                '@id'   => get_permalink($post->ID)
+            ),
+            'publisher' => array('@id' => home_url('/#organization')),
+            'author'    => array(
+                '@type' => 'Person',
+                'name'  => get_the_author_meta('display_name', $post->post_author) ?: 'تحریریه بساط ناب'
+            )
+        );
+        if (has_post_thumbnail($post->ID)) {
+            $img = get_the_post_thumbnail_url($post->ID, 'large');
+            if ($img) $article_schema['image'] = $img;
+        }
+        $schema_graph[] = $article_schema;
+    }
+
     $final_schema = array(
         '@context' => 'https://schema.org',
         '@graph'   => $schema_graph
@@ -586,6 +615,5 @@ function basate_nab_render_product_video_tab_content() {
     <?php
 }
 
-
-
-
+// 12. Automated SEO Blog Posts & Blog Page Initialization
+require_once BASATE_DIR . '/inc/blog-seeder.php';

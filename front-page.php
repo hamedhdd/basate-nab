@@ -367,7 +367,62 @@ get_header();
             </div>
         </section>
 
-        <!-- 7. Instagram Showcase Section (@basate_nab) -->
+        <!-- 7. Latest Blog & Vintage Interior Design Articles -->
+        <section class="home-blog-showcase" style="margin-bottom:56px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; flex-wrap:wrap; gap:12px;">
+                <div>
+                    <span class="badge-antique" style="position:static; display:inline-block; margin-bottom:8px; padding:4px 12px; font-size:0.75rem;">دانشنامه و مقالات تخصصی</span>
+                    <h3 style="font-size:1.45rem; font-weight:800; color:var(--color-dark); margin:0;">راهنمای دکوراسیون رترو، مید سنتری و نورپردازی وینتیج</h3>
+                </div>
+                <a href="<?php echo esc_url(home_url('/blog/')); ?>" class="view-all-link" style="display:inline-flex; align-items:center; gap:6px; color:var(--color-primary-hover); font-weight:700; font-size:0.9rem;">
+                    <span>مشاهده همه مقالات وبلاگ</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </a>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:22px;">
+                <?php
+                $recent_posts = new WP_Query(array(
+                    'post_type'      => 'post',
+                    'posts_per_page' => 4,
+                    'post_status'    => 'publish'
+                ));
+                if ($recent_posts->have_posts()) :
+                    while ($recent_posts->have_posts()) : $recent_posts->the_post();
+                        ?>
+                        <article class="home-blog-card" style="background:#ffffff; border:1px solid #ebd9c4; border-radius:14px; overflow:hidden; box-shadow:0 3px 12px rgba(35,23,9,0.05); display:flex; flex-direction:column; transition:transform 0.2s ease;">
+                            <?php if (has_post_thumbnail()) : ?>
+                                <a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>" style="display:block; height:160px; overflow:hidden;">
+                                    <?php the_post_thumbnail('medium', array('style' => 'width:100%; height:100%; object-fit:cover;', 'loading' => 'lazy', 'alt' => get_the_title())); ?>
+                                </a>
+                            <?php endif; ?>
+                            <div style="padding:16px; display:flex; flex-direction:column; flex:1; justify-content:space-between;">
+                                <div>
+                                    <span style="font-size:0.75rem; color:var(--color-primary-hover); font-weight:600;"><?php echo basate_fa_num(get_the_date('j F Y')); ?></span>
+                                    <h4 style="font-size:0.98rem; font-weight:800; line-height:1.45; margin:6px 0 8px;">
+                                        <a href="<?php the_permalink(); ?>" style="color:var(--color-dark); text-decoration:none;">
+                                            <?php the_title(); ?>
+                                        </a>
+                                    </h4>
+                                    <p style="font-size:0.82rem; color:var(--color-text-muted); line-height:1.6; margin:0 0 10px;">
+                                        <?php echo wp_trim_words(get_the_excerpt(), 14); ?>
+                                    </p>
+                                </div>
+                                <a href="<?php the_permalink(); ?>" style="color:var(--color-primary); font-weight:700; font-size:0.8rem; display:inline-flex; align-items:center; gap:4px;">
+                                    <span>مطالعه مقاله</span>
+                                    <span>&larr;</span>
+                                </a>
+                            </div>
+                        </article>
+                        <?php
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
+            </div>
+        </section>
+
+        <!-- 8. Instagram Showcase Section (@basate_nab) -->
         <section class="instagram-showcase-box">
             <div class="instagram-title-area">
                 <h3>همراه ما در اینستاگرام بساط ناب باشید</h3>

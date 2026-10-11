@@ -26,6 +26,7 @@
                     <li><a href="<?php echo esc_url(home_url('/?s=تابلو+رترو&post_type=product')); ?>">تابلوهای رترو و قاب کهنه‌کاری</a></li>
                     <li><a href="<?php echo esc_url(home_url('/?s=گرامافون&post_type=product')); ?>">گرامافون، رادیو و والو کلاسیک</a></li>
                     <li><a href="<?php echo esc_url(home_url('/?s=آنتیک&post_type=product')); ?>">ظروف برنجی و اشیای آنتیک</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/blog/')); ?>" style="color:var(--color-primary);">وبلاگ و دانشنامه دکوراسیون رترو</a></li>
                 </ul>
             </div>
 

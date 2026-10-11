@@ -5,6 +5,24 @@ All notable changes to the **Basate Nab** WordPress Theme project will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-10-11
+
+### Added
+- **Dedicated Blog Page & Rich SEO Articles System (`/blog/`)**:
+  - Created dedicated blog archive template [`page-blog.php`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/page-blog.php) with vintage card typography, cover badges, excerpt previews, reading time, and clean responsive pagination.
+  - Developed automated post seeder [`inc/blog-seeder.php`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/inc/blog-seeder.php) generating 6 in-depth, original Persian SEO articles targeted at high-value search keywords:
+    1. *اصول نورپردازی داخلی در دکوراسیون مید سنتری مدرن (Mid Century) با آباژور و لوستر وینتیج*
+    2. *جادوی آینه محدب و وسایل دکوری وینتیج در عمق‌بخشی به چیدمان خانه*
+    3. *آباژور تک نسخه و دست‌ساز: چرا نورپردازی اختصاصی هویت‌بخش فضای شماست؟*
+    4. *تابلوهای رترو و قاب فلزی: تزئین دیوار با پوسترهای کلاسیک و نوستالژیک*
+    5. *ساعت رترو و تلفن وینتیج: اکسسوری‌های نمادین روی میز کار و کنسول*
+    6. *راهنمای خرید عتیقه‌جات و وسایل دکوری وینتیج در ایران: از سمساری تا بساط ناب*
+  - Attached authentic featured images from genuine store media library to each blog post.
+  - Added structured data: `BlogPosting` JSON-LD schema with author, publisher, datePublished, and image graph for search engines.
+  - Added **Latest Articles Showcase Section** (`.home-blog-showcase`) on homepage [`front-page.php`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/front-page.php) for internal link equity and user discovery.
+  - Added "وبلاگ و دانشنامه" links to desktop header navigation, mobile drawer menu, and footer links.
+  - Added blog and single article typography rules in [`assets/css/main.css`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/assets/css/main.css).
+
 ## [1.5.0] - 2026-10-11
 
 ### Added
