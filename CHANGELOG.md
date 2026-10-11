@@ -30,7 +30,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Mobile PageSpeed & Accessibility Optimization**:
   - Fixed "Links do not have a discernible name" audit by adding explicit `aria-label="<?php the_title_attribute(); ?>"` and image `alt` attributes to all product thumbnail links in `.products-grid`.
   - Added non-blocking `defer` attribute to `basate-main.js` reducing render-blocking resources.
-  - Added `<link rel="preconnect">` and `<link rel="dns-prefetch">` hints for `cdn.jsdelivr.net` and `instagram.com` accelerating Vazirmatn font and media asset loading.
+  - **Self-Hosted Local Typography (Zero External CDN Dependency)**:
+    - Downloaded and bundled Woff2 webfonts for Vazirmatn locally into `assets/fonts/vazirmatn/` (`Light`, `Regular`, `Medium`, `SemiBold`, `Bold`).
+    - Embedded local `@font-face` definitions directly into `style.css` with `font-display: swap`.
+    - Removed remote `cdn.jsdelivr.net` CSS dependency from `functions.php` enqueue queue, completely eliminating third-party DNS lookup, SSL handshake, and round-trip latency.
+    - Preloaded local `Vazirmatn-Regular.woff2` via `<link rel="preload">` in `header.php` for instant font rendering.
 
 ## [1.4.1] - 2026-10-11
 

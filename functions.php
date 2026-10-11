@@ -51,9 +51,8 @@ function basate_nab_setup() {
 }
 add_action('after_setup_theme', 'basate_nab_setup');
 
-// 2. Enqueue Assets
+// 2. Enqueue Assets (Self-Hosted Local Zero-External Network Delay)
 function basate_nab_scripts() {
-    wp_enqueue_style('vazirmatn-font', 'https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css', array(), '33.003');
     wp_enqueue_style('basate-style', get_stylesheet_uri(), array(), BASATE_VERSION);
     wp_enqueue_style('basate-main', BASATE_URI . '/assets/css/main.css', array('basate-style'), BASATE_VERSION);
 
