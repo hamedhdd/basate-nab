@@ -21,8 +21,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Implemented responsive styles in `assets/css/main.css` for mobile and desktop video presentation.
 
 ### Changed
-- **Product Video Badge Title**:
-  - Updated single product video card badge header from "ویدیو تست و بررسی اصالت در اینستاگرام" to "ویدیوی محصول" per user request.
+- **Product Video Tab & Terminology Modernization**:
+  - Renamed the single product WooCommerce tab from "🎬 ویدیوی معرفی و تست کالا" to "🎬 ویدیوی محصول".
+  - Updated single product video card badge header from "ویدیو تست و بررسی اصالت در اینستاگرام" to "ویدیوی محصول".
+  - Purged all occurrences of the word "تست" across product descriptions, video titles, tooltips, and showcase copy, replacing them with clear vintage product presentation descriptions.
 
 ## [1.4.1] - 2026-10-11
 

@@ -200,7 +200,7 @@ get_header();
                                 <?php endif; ?>
                                 <span class="badge-antique">وینتیج</span>
                                 <?php if (function_exists('basate_nab_get_product_video_data') && basate_nab_get_product_video_data(get_the_ID())) : ?>
-                                    <span class="badge-video-available" title="دارای ویدیوی تست سلامت در اینستاگرام">
+                                    <span class="badge-video-available" title="دارای ویدیوی محصول در اینستاگرام">
                                         <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                                         <span>دارای ویدیو</span>
                                     </span>
@@ -371,7 +371,7 @@ get_header();
         <section class="instagram-showcase-box">
             <div class="instagram-title-area">
                 <h3>همراه ما در اینستاگرام بساط ناب باشید</h3>
-                <p>جدیدترین آنتیک‌های وارداتی، ویدیوهای تست سلامت و استوری‌های تخفیف روزانه را در پیج دنبال کنید</p>
+                <p>جدیدترین آنتیک‌های وارداتی، ویدیوهای معرفی محصولات و استوری‌های تخفیف روزانه را در پیج دنبال کنید</p>
             </div>
             <div class="instagram-gallery-grid">
                 <?php 

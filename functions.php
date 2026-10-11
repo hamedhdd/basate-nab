@@ -328,7 +328,7 @@ function basate_nab_sync_authentic_instagram_products() {
         ),
         array(
             'name'     => 'آباژور سالنی ایستاده طبقاتی باهاوس پگودا سبز یشمی و کلاهک پلیسه',
-            'desc'     => 'آباژور ایستاده چشم‌نواز با رنگ بدنه خاص سبز یشمی و دیسک‌های طبقاتی سبک باهاوس. سلامت کامل بدنه و سیم‌کشی تست‌شده.',
+            'desc'     => 'آباژور ایستاده چشم‌نواز با رنگ بدنه خاص سبز یشمی و دیسک‌های طبقاتی سبک باهاوس. سلامت کامل بدنه و سیم‌کشی استاندارد.',
             'price'    => '6400000',
             'regular'  => '7200000',
             'cat'      => 'آباژور سالنی',
@@ -472,14 +472,14 @@ function basate_nab_get_product_video_data($product_id = null) {
 
     // Mapping of Product ID to genuine Instagram Reel videos & shortcodes
     $video_map = array(
-        45 => array('file' => 'ig_product_1.mp4',  'code' => 'DeAOPv-qVEO', 'title' => 'ویدیوی بررسی سلامت و جزئیات تراش کریستال آباژور'),
-        46 => array('file' => 'ig_product_2.mp4',  'code' => 'DduUtiEq--V', 'title' => 'ویدیوی تست روشنایی و کیفیت شیشه اپالین چراغ قارچی'),
+        45 => array('file' => 'ig_product_1.mp4',  'code' => 'DeAOPv-qVEO', 'title' => 'ویدیوی معرفی و جزئیات تراش کریستال آباژور'),
+        46 => array('file' => 'ig_product_2.mp4',  'code' => 'DduUtiEq--V', 'title' => 'ویدیوی روشنایی و کیفیت شیشه اپالین چراغ قارچی'),
         47 => array('file' => 'ig_product_3.mp4',  'code' => 'DdZyCGBq_8-', 'title' => 'ویدیوی زاویه دید ۳۶۰ درجه و نوردهی آباژور UFO'),
         48 => array('file' => 'ig_product_4.mp4',  'code' => 'DdKIC3FK_Tf', 'title' => 'ویدیوی نمایش ایستایی و رنگ خاص شید خربزه‌ای'),
         49 => array('file' => 'ig_product_5.mp4',  'code' => 'Dc4BJhbK9Ey', 'title' => 'ویدیوی درخشش گوی اپالین و پایه ستونی در تاریکی'),
         50 => array('file' => 'ig_product_6.mp4',  'code' => 'DccDp5LqO8q', 'title' => 'ویدیوی بازتاب بدنه استیل صیقلی و اتصالات برنجی'),
         51 => array('file' => 'ig_product_7.mp4',  'code' => 'DcJoSw-Kt_t', 'title' => 'ویدیوی جلوه نقوش سندبلاست و پایه بلند فرانسوی'),
-        52 => array('file' => 'ig_product_8.mp4',  'code' => 'Db_PLUaqBVH', 'title' => 'ویدیوی تست سلامت طبقات باهاوس و نور کلاهک پلیسه'),
+        52 => array('file' => 'ig_product_8.mp4',  'code' => 'Db_PLUaqBVH', 'title' => 'ویدیوی طبقات باهاوس و نور کلاهک پلیسه'),
         53 => array('file' => 'ig_product_12.mp4', 'code' => 'DbRdBr8PbM-', 'title' => 'ویدیوی خطوط راه‌راه کهربایی Space Age در حالت روشن'),
         54 => array('file' => 'ig_product_9.mp4',  'code' => 'DbyztrnqqNq', 'title' => 'ویدیوی ظرافت برنج آنتیک و حباب لاله دست‌ساز'),
         55 => array('file' => 'ig_product_10.mp4', 'code' => 'DbjXTA2vZpW', 'title' => 'ویدیوی بازتاب منشورهای کریستال و دیوارکوب برنزی'),
@@ -541,7 +541,7 @@ function basate_nab_add_product_video_tab($tabs) {
     $video = basate_nab_get_product_video_data();
     if ($video) {
         $tabs['basate_video_tab'] = array(
-            'title'    => '🎬 ویدیوی معرفی و تست کالا',
+            'title'    => '🎬 ویدیوی محصول',
             'priority' => 15,
             'callback' => 'basate_nab_render_product_video_tab_content'
         );
@@ -559,7 +559,7 @@ function basate_nab_render_product_video_tab_content() {
             <?php echo esc_html($video['title']); ?>
         </h3>
         <p style="font-size:0.9rem; color:var(--color-text-muted); line-height:1.8; margin-bottom:18px;">
-            این ویدیو به صورت زنده از پیج رسمی <strong>بساط ناب (@basate_nab)</strong> ضبط شده تا وضعیت فیزیکی، عملکرد کلید و سرپیچ، درخشش بدنه و پرتاب نور این قطعه عتیقه را به صورت ۱۰۰٪ شفاف مشاهده نمایید.
+            این ویدیو به صورت زنده از پیج رسمی <strong>بساط ناب (@basate_nab)</strong> ضبط شده تا وضعیت ظاهری، ابعاد، درخشش بدنه و نورپردازی این قطعه عتیقه را به صورت ۱۰۰٪ شفاف مشاهده نمایید.
         </p>
         <div style="max-width:540px; margin:0 auto; border-radius:16px; overflow:hidden; box-shadow:0 8px 30px rgba(35,23,9,0.12); border:1px solid #ebd9c4;">
             <video controls preload="metadata" playsinline style="width:100%; display:block; background:#000;">
