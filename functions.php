@@ -506,7 +506,7 @@ function basate_nab_render_product_video_showcase() {
         <div class="video-showcase-header">
             <div class="video-badge-pill">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <span>ویدیو تست و بررسی اصالت در اینستاگرام</span>
+                <span>ویدیوی محصول</span>
             </div>
             <a href="<?php echo esc_url($video['reel_url']); ?>" target="_blank" rel="noopener" class="video-ig-link" title="مشاهده ریلز این محصول در اینستاگرام">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
