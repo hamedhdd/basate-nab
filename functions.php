@@ -66,6 +66,17 @@ function basate_nab_scripts() {
 }
 add_action('wp_enqueue_scripts', 'basate_nab_scripts');
 
+// Add defer attribute to non-critical scripts
+add_filter('script_loader_tag', 'basate_nab_defer_scripts', 10, 3);
+function basate_nab_defer_scripts($tag, $handle, $src) {
+    if ($handle === 'basate-main-js') {
+        if (false === strpos($tag, 'defer')) {
+            $tag = str_replace('<script ', '<script defer ', $tag);
+        }
+    }
+    return $tag;
+}
+
 // 3. Persian Digits Helper
 function basate_fa_num($number) {
     $en = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');

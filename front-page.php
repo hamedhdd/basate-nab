@@ -205,9 +205,9 @@ get_header();
                                         <span>دارای ویدیو</span>
                                     </span>
                                 <?php endif; ?>
-                                <a href="<?php the_permalink(); ?>">
+                                <a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>">
                                     <?php if (has_post_thumbnail()) : ?>
-                                        <?php the_post_thumbnail('medium'); ?>
+                                        <?php the_post_thumbnail('medium', array('loading' => 'lazy', 'alt' => get_the_title())); ?>
                                     <?php else : ?>
                                         <div style="display:flex; align-items:center; justify-content:center; width:100%; height:100%; background:#f5efe6; color:#9c8c7d;">
                                             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2h6l3 7H6l3-7z"/><path d="M12 9v9"/><path d="M8 22h8"/></svg>

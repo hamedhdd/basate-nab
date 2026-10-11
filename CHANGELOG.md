@@ -26,6 +26,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Updated single product video card badge header from "ویدیو تست و بررسی اصالت در اینستاگرام" to "ویدیوی محصول".
   - Purged all occurrences of the word "تست" across product descriptions, video titles, tooltips, and showcase copy, replacing them with clear vintage product presentation descriptions.
 
+### Fixed
+- **Mobile PageSpeed & Accessibility Optimization**:
+  - Fixed "Links do not have a discernible name" audit by adding explicit `aria-label="<?php the_title_attribute(); ?>"` and image `alt` attributes to all product thumbnail links in `.products-grid`.
+  - Added non-blocking `defer` attribute to `basate-main.js` reducing render-blocking resources.
+  - Added `<link rel="preconnect">` and `<link rel="dns-prefetch">` hints for `cdn.jsdelivr.net` and `instagram.com` accelerating Vazirmatn font and media asset loading.
+
 ## [1.4.1] - 2026-10-11
 
 ### Fixed
