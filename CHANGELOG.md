@@ -5,6 +5,30 @@ All notable changes to the **Basate Nab** WordPress Theme project will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2026-10-11
+
+### Changed
+- **Separation of Blog Photography from Store Product Images**:
+  - Removed all store product images (`ig_product_*.jpg`) from blog featured images and post content to preserve catalog uniqueness.
+  - Sourced and bundled 12 high-resolution, professional editorial interior design and lighting photographs into `assets/images/blog/`.
+  - Implemented `basate_nab_get_blog_post_image_url()` in [`functions.php`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/functions.php) guaranteeing zero usage of product media attachments for articles across Open Graph, Twitter Cards, Google JSON-LD `BlogPosting` schema, archive cards, and single pages.
+
+### Added
+- **Expanded Blog to 12 Long-Form SEO Articles**:
+  - Added 6 new comprehensive Persian articles in [`inc/blog-seeder.php`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/inc/blog-seeder.php):
+    7. *راهنمای جامع انتخاب چراغ مطالعه رترو برای میز کار و اتاق مطالعه*
+    8. *آباژور قدی (کنار سالنی): خلق یک گوشه دنج و دلنشین (Cozy Corner) در خانه*
+    9. *شکوه لوسترهای برنجی و کریستال آنتیک در دکوراسیون پذیرایی معاصر*
+    10. *تفاوت سبک‌های وینتیج، رترو و آنتیک: راهنمای جامع برای علاقه‌مندان به دکوراسیون*
+    11. *اصول تلفیق مدرن و وینتیج: چگونه بدون شلوغی، اصالت را به خانه بیاوریم؟*
+    12. *حباب‌های عتیقه و شیشه‌های دست‌ساز: هنر فراموش‌شده در روشنایی‌های کلاسیک*
+- **Contextual Store & Product References (`.blog-product-reference-box`)**:
+  - Embedded elegant retro reference callout boxes in every article pointing users to relevant store product categories (`/product-category/table-lamps/`, `/product-category/floor-lamps/`, `/product-category/retro-frames/`, `/product-category/vintage-decor/`, `/product-category/gramophone-radio/`).
+- **Enhanced Single Post Template (`single.php`)**:
+  - Added breadcrumbs navigation, category badge, publication date in Persian numerals, author bio box, and a 3-column "سایر مقالات خواندنی وبلاگ" (Related Articles) section.
+- **Styling**:
+  - Added CSS classes for `.blog-product-reference-box`, `.ref-badge`, `.ref-btn`, and responsive mobile button stacks in [`assets/css/main.css`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/assets/css/main.css).
+
 ## [1.6.0] - 2026-10-11
 
 ### Added

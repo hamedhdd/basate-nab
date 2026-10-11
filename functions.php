@@ -83,6 +83,38 @@ function basate_fa_num($number) {
     return str_replace($en, $fa, (string)$number);
 }
 
+// 3.1. Editorial Blog Image Resolver (Guarantees zero usage of store product images for blog)
+function basate_nab_get_blog_post_image_url($post_id = 0) {
+    if (!$post_id) {
+        $post_id = get_the_ID();
+    }
+    $thumb_id = get_post_thumbnail_id($post_id);
+    // Disallow product media attachments (IDs 32 to 43)
+    if ($thumb_id && !in_array((int)$thumb_id, array(32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43))) {
+        $img = wp_get_attachment_image_url($thumb_id, 'large');
+        if ($img) return $img;
+    }
+    $slug = get_post_field('post_name', $post_id);
+    $map = array(
+        'mid-century-modern-interior-lighting-guide'   => 'blog_midcentury_living.jpg',
+        'convex-mirror-vintage-accessories-decor'      => 'blog_convex_mirror_decor.jpg',
+        'handcrafted-one-of-a-kind-vintage-lamps'       => 'blog_artisan_table_lamp.jpg',
+        'retro-wall-art-metal-frames-vintage-posters'  => 'blog_retro_poster_frames.jpg',
+        'vintage-desk-clocks-and-rotary-telephones'    => 'blog_retro_clock_telephone.jpg',
+        'antique-shopping-vintage-decor-guide-iran'    => 'blog_flea_market_antiques.jpg',
+        'retro-study-desk-lamp-selection-guide'        => 'blog_reading_desk_lamp.jpg',
+        'vintage-floor-lamp-cozy-corner-interior'      => 'blog_floor_lamp_nook.jpg',
+        'brass-and-crystal-antique-chandelier-decor'   => 'blog_vintage_chandelier.jpg',
+        'vintage-vs-retro-vs-antique-complete-guide'   => 'blog_vintage_vs_antique.jpg',
+        'modern-eclectic-interior-vintage-decor-mix'   => 'blog_modern_vintage_mix.jpg',
+        'antique-glass-shades-and-handcrafted-lighting' => 'blog_antique_glass_shade.jpg'
+    );
+    if (isset($map[$slug])) {
+        return get_template_directory_uri() . '/assets/images/blog/' . $map[$slug];
+    }
+    return get_template_directory_uri() . '/assets/images/blog/blog_midcentury_living.jpg';
+}
+
 // 4. WooCommerce Iranian Store Customizations
 // Format Currency Symbol to Toman
 add_filter('woocommerce_currency_symbol', 'basate_nab_currency_symbol', 10, 2);
@@ -131,11 +163,17 @@ function basate_nab_seo_meta_tags() {
                 if ($img) $og_image = $img[0];
             }
         }
-    } elseif (is_singular('post') || is_page()) {
+    } elseif (is_singular('post')) {
         global $post;
         $og_title = get_the_title() . ' | ' . $site_title;
         $og_desc = wp_strip_all_tags(get_the_excerpt() ?: $site_desc);
         $og_type = 'article';
+        $og_image = basate_nab_get_blog_post_image_url($post->ID);
+    } elseif (is_page()) {
+        global $post;
+        $og_title = get_the_title() . ' | ' . $site_title;
+        $og_desc = wp_strip_all_tags(get_the_excerpt() ?: $site_desc);
+        $og_type = 'website';
         if (has_post_thumbnail()) {
             $og_image = get_the_post_thumbnail_url($post->ID, 'large');
         }
@@ -271,9 +309,9 @@ function basate_nab_schema_jsonld() {
                 'name'  => get_the_author_meta('display_name', $post->post_author) ?: 'تحریریه بساط ناب'
             )
         );
-        if (has_post_thumbnail($post->ID)) {
-            $img = get_the_post_thumbnail_url($post->ID, 'large');
-            if ($img) $article_schema['image'] = $img;
+        $img = basate_nab_get_blog_post_image_url($post->ID);
+        if ($img) {
+            $article_schema['image'] = $img;
         }
         $schema_graph[] = $article_schema;
     }

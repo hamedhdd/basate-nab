@@ -391,11 +391,12 @@ get_header();
                     while ($recent_posts->have_posts()) : $recent_posts->the_post();
                         ?>
                         <article class="home-blog-card" style="background:#ffffff; border:1px solid #ebd9c4; border-radius:14px; overflow:hidden; box-shadow:0 3px 12px rgba(35,23,9,0.05); display:flex; flex-direction:column; transition:transform 0.2s ease;">
-                            <?php if (has_post_thumbnail()) : ?>
-                                <a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>" style="display:block; height:160px; overflow:hidden;">
-                                    <?php the_post_thumbnail('medium', array('style' => 'width:100%; height:100%; object-fit:cover;', 'loading' => 'lazy', 'alt' => get_the_title())); ?>
-                                </a>
-                            <?php endif; ?>
+                            <?php 
+                            $blog_img_url = basate_nab_get_blog_post_image_url(get_the_ID());
+                            ?>
+                            <a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>" style="display:block; height:160px; overflow:hidden;">
+                                <img src="<?php echo esc_url($blog_img_url); ?>" alt="<?php the_title_attribute(); ?>" style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;" loading="lazy">
+                            </a>
                             <div style="padding:16px; display:flex; flex-direction:column; flex:1; justify-content:space-between;">
                                 <div>
                                     <span style="font-size:0.75rem; color:var(--color-primary-hover); font-weight:600;"><?php echo basate_fa_num(get_the_date('j F Y')); ?></span>

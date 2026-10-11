@@ -36,15 +36,15 @@ get_header();
                 while ($blog_query->have_posts()) : $blog_query->the_post();
                     ?>
                     <article id="post-<?php the_ID(); ?>" <?php post_class('blog-card-item'); ?> style="background:#ffffff; border:1px solid #ebd9c4; border-radius:16px; overflow:hidden; box-shadow:0 4px 18px rgba(35,23,9,0.06); display:flex; flex-direction:column; transition:transform 0.25s ease, box-shadow 0.25s ease;">
-                        <?php if (has_post_thumbnail()) : ?>
-                            <a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>" style="display:block; height:210px; overflow:hidden; position:relative; background:#231709;">
-                                <?php the_post_thumbnail('medium_large', array('style' => 'width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;', 'loading' => 'lazy', 'alt' => get_the_title())); ?>
-                            </a>
-                        <?php else : ?>
-                            <a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>" style="display:flex; align-items:center; justify-content:center; height:210px; background:linear-gradient(135deg, #2b1c11, #150d06); color:#dfceb7;">
-                                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            </a>
-                        <?php endif; ?>
+                        <?php 
+                        $blog_img_url = basate_nab_get_blog_post_image_url(get_the_ID());
+                        $cats = get_the_category();
+                        $cat_label = !empty($cats) ? esc_html($cats[0]->name) : 'دکوراسیون وینتیج';
+                        ?>
+                        <a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>" style="display:block; height:210px; overflow:hidden; position:relative; background:#231709;">
+                            <img src="<?php echo esc_url($blog_img_url); ?>" alt="<?php the_title_attribute(); ?>" style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;" loading="lazy">
+                            <span class="badge-antique" style="position:absolute; top:12px; right:12px; font-size:0.75rem; padding:3px 10px; background:rgba(35,23,9,0.85); color:#e6c888; border:1px solid #b8860b;"><?php echo $cat_label; ?></span>
+                        </a>
 
                         <div style="padding:24px; display:flex; flex-direction:column; flex:1; justify-content:space-between;">
                             <div>
