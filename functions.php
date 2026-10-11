@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('BASATE_VERSION', '1.0.3');
+define('BASATE_VERSION', '1.1.0');
 define('BASATE_DIR', get_template_directory());
 define('BASATE_URI', get_template_directory_uri());
 
@@ -463,6 +463,119 @@ function basate_nab_enable_customer_registration() {
     }
 }
 add_action('init', 'basate_nab_enable_customer_registration');
+
+// 11. Authentic Instagram Video & Reel Mapping for WooCommerce Products
+function basate_nab_get_product_video_data($product_id = null) {
+    if (!$product_id) {
+        $product_id = get_the_ID();
+    }
+
+    // Mapping of Product ID to genuine Instagram Reel videos & shortcodes
+    $video_map = array(
+        45 => array('file' => 'ig_product_1.mp4',  'code' => 'DeAOPv-qVEO', 'title' => 'ویدیوی بررسی سلامت و جزئیات تراش کریستال آباژور'),
+        46 => array('file' => 'ig_product_2.mp4',  'code' => 'DduUtiEq--V', 'title' => 'ویدیوی تست روشنایی و کیفیت شیشه اپالین چراغ قارچی'),
+        47 => array('file' => 'ig_product_3.mp4',  'code' => 'DdZyCGBq_8-', 'title' => 'ویدیوی زاویه دید ۳۶۰ درجه و نوردهی آباژور UFO'),
+        48 => array('file' => 'ig_product_4.mp4',  'code' => 'DdKIC3FK_Tf', 'title' => 'ویدیوی نمایش ایستایی و رنگ خاص شید خربزه‌ای'),
+        49 => array('file' => 'ig_product_5.mp4',  'code' => 'Dc4BJhbK9Ey', 'title' => 'ویدیوی درخشش گوی اپالین و پایه ستونی در تاریکی'),
+        50 => array('file' => 'ig_product_6.mp4',  'code' => 'DccDp5LqO8q', 'title' => 'ویدیوی بازتاب بدنه استیل صیقلی و اتصالات برنجی'),
+        51 => array('file' => 'ig_product_7.mp4',  'code' => 'DcJoSw-Kt_t', 'title' => 'ویدیوی جلوه نقوش سندبلاست و پایه بلند فرانسوی'),
+        52 => array('file' => 'ig_product_8.mp4',  'code' => 'Db_PLUaqBVH', 'title' => 'ویدیوی تست سلامت طبقات باهاوس و نور کلاهک پلیسه'),
+        53 => array('file' => 'ig_product_12.mp4', 'code' => 'DbRdBr8PbM-', 'title' => 'ویدیوی خطوط راه‌راه کهربایی Space Age در حالت روشن'),
+        54 => array('file' => 'ig_product_9.mp4',  'code' => 'DbyztrnqqNq', 'title' => 'ویدیوی ظرافت برنج آنتیک و حباب لاله دست‌ساز'),
+        55 => array('file' => 'ig_product_10.mp4', 'code' => 'DbjXTA2vZpW', 'title' => 'ویدیوی بازتاب منشورهای کریستال و دیوارکوب برنزی'),
+        56 => array('file' => 'ig_product_11.mp4', 'code' => 'DbgmDhNKQJd', 'title' => 'ویدیوی لمس بافت مخمل دست‌دوز و پایه سنگین برنز'),
+    );
+
+    if (isset($video_map[$product_id])) {
+        $item = $video_map[$product_id];
+        $item['video_url'] = BASATE_URI . '/assets/videos/instagram_products/' . $item['file'];
+        $item['reel_url']  = 'https://www.instagram.com/reel/' . $item['code'] . '/';
+        return $item;
+    }
+
+    return null;
+}
+
+// Render Authentic Product Video Showcase on Single Product Page
+add_action('woocommerce_single_product_summary', 'basate_nab_render_product_video_showcase', 35);
+function basate_nab_render_product_video_showcase() {
+    $video = basate_nab_get_product_video_data();
+    if (!$video) return;
+    ?>
+    <div class="product-video-showcase-card">
+        <div class="video-showcase-header">
+            <div class="video-badge-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span>ویدیو تست و بررسی اصالت در اینستاگرام</span>
+            </div>
+            <a href="<?php echo esc_url($video['reel_url']); ?>" target="_blank" rel="noopener" class="video-ig-link" title="مشاهده ریلز این محصول در اینستاگرام">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <span>مشاهده ریلز در @basate_nab</span>
+            </a>
+        </div>
+        
+        <div class="video-player-container">
+            <video 
+                class="retro-product-video-player" 
+                controls 
+                preload="metadata" 
+                playsinline 
+                poster="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium_large')); ?>"
+            >
+                <source src="<?php echo esc_url($video['video_url']); ?>" type="video/mp4">
+                مرورگر شما از پخش مستقیم ویدیو پشتیبانی نمی‌کند.
+            </video>
+        </div>
+
+        <div class="video-caption-footer">
+            <span class="video-caption-icon">🎬</span>
+            <span class="video-caption-text"><?php echo esc_html($video['title']); ?></span>
+        </div>
+    </div>
+    <?php
+}
+
+// Add Video Tab to WooCommerce Product Tabs
+add_filter('woocommerce_product_tabs', 'basate_nab_add_product_video_tab');
+function basate_nab_add_product_video_tab($tabs) {
+    $video = basate_nab_get_product_video_data();
+    if ($video) {
+        $tabs['basate_video_tab'] = array(
+            'title'    => '🎬 ویدیوی معرفی و تست کالا',
+            'priority' => 15,
+            'callback' => 'basate_nab_render_product_video_tab_content'
+        );
+    }
+    return $tabs;
+}
+
+function basate_nab_render_product_video_tab_content() {
+    $video = basate_nab_get_product_video_data();
+    if (!$video) return;
+    ?>
+    <div class="product-video-tab-content">
+        <h3 style="font-size:1.15rem; font-weight:700; color:var(--color-dark); margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+            <?php echo esc_html($video['title']); ?>
+        </h3>
+        <p style="font-size:0.9rem; color:var(--color-text-muted); line-height:1.8; margin-bottom:18px;">
+            این ویدیو به صورت زنده از پیج رسمی <strong>بساط ناب (@basate_nab)</strong> ضبط شده تا وضعیت فیزیکی، عملکرد کلید و سرپیچ، درخشش بدنه و پرتاب نور این قطعه عتیقه را به صورت ۱۰۰٪ شفاف مشاهده نمایید.
+        </p>
+        <div style="max-width:540px; margin:0 auto; border-radius:16px; overflow:hidden; box-shadow:0 8px 30px rgba(35,23,9,0.12); border:1px solid #ebd9c4;">
+            <video controls preload="metadata" playsinline style="width:100%; display:block; background:#000;">
+                <source src="<?php echo esc_url($video['video_url']); ?>" type="video/mp4">
+            </video>
+        </div>
+        <div style="text-align:center; margin-top:16px;">
+            <a href="<?php echo esc_url($video['reel_url']); ?>" target="_blank" rel="noopener" class="btn-primary-retro" style="display:inline-flex; align-items:center; gap:8px; padding:10px 24px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <span>مشاهده نظرات و ثبت استعلام در پیج @basate_nab</span>
+            </a>
+        </div>
+    </div>
+    <?php
+}
+
 
 
 

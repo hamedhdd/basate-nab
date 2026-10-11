@@ -199,6 +199,12 @@ get_header();
                                     <span class="badge-discount"><?php echo basate_fa_num($discount_percent); ?>٪ تخفیف</span>
                                 <?php endif; ?>
                                 <span class="badge-antique">وینتیج</span>
+                                <?php if (function_exists('basate_nab_get_product_video_data') && basate_nab_get_product_video_data(get_the_ID())) : ?>
+                                    <span class="badge-video-available" title="دارای ویدیوی تست سلامت در اینستاگرام">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                        <span>دارای ویدیو</span>
+                                    </span>
+                                <?php endif; ?>
                                 <a href="<?php the_permalink(); ?>">
                                     <?php if (has_post_thumbnail()) : ?>
                                         <?php the_post_thumbnail('medium'); ?>

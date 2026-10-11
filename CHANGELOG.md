@@ -5,6 +5,21 @@ All notable changes to the **Basate Nab** WordPress Theme project will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-10-11
+
+### Added
+- **Authentic Instagram Reels & Videos Integration for Products**:
+  - Downloaded and converted genuine video streams (12 MP4 files) from [@basate_nab](https://www.instagram.com/basate_nab/) matching all 12 vintage store products into `assets/videos/instagram_products/`.
+  - Added `basate_nab_get_product_video_data()` in `functions.php` mapping each WooCommerce product ID (45 through 56) to its corresponding high-definition MP4 video, original Instagram Reel shortcode, and descriptive Persian video title.
+  - Implemented `.product-video-showcase-card` on the single product page summary featuring:
+    - Dedicated "ویدیو تست و بررسی اصالت در اینستاگرام" badge pill.
+    - Direct hyperlink to the original Instagram Reel on `@basate_nab`.
+    - HTML5 responsive video player with `controls`, `playsinline`, and product cover frame poster.
+    - Persian caption describing the video's focus (e.g. testing crystal cuts, opal glass illumination, brass fittings).
+  - Added a dedicated "🎬 ویدیوی معرفی و تست کالا" tab to the WooCommerce product information tabs (`woocommerce_product_tabs`).
+  - Added a "دارای ویدیو" badge (`.badge-video-available`) on catalog and homepage product cards alerting users that a video inspection is available.
+  - Implemented responsive styles in `assets/css/main.css` for mobile and desktop video presentation.
+
 ## [1.4.1] - 2026-10-11
 
 ### Fixed
