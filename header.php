@@ -31,31 +31,34 @@
 <!-- 2. Sticky Header -->
 <header id="masthead" class="site-header">
     <div class="container header-inner">
-        <!-- Mobile Menu Toggle -->
-        <button type="button" class="action-btn d-lg-none" data-toggle="mobile-drawer" aria-label="منوی سایت" style="display:inline-flex; width:40px; height:40px; padding:0; justify-content:center; align-items:center;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
+        <!-- Brand & Mobile Toggle Group -->
+        <div class="header-brand-side">
+            <!-- Mobile Menu Toggle -->
+            <button type="button" class="action-btn mobile-menu-toggle d-lg-none" data-toggle="mobile-drawer" aria-label="منوی سایت">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
 
-        <!-- Brand Identity -->
-        <div class="brand-wrapper">
-            <a href="<?php echo esc_url(home_url('/')); ?>" class="brand-link" style="display:flex; align-items:center; gap:12px;">
-                <div class="brand-logo-icon">
-                    <!-- Vintage Lamp SVG Icon -->
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 2h6l3 7H6l3-7z"/>
-                        <path d="M12 9v9"/>
-                        <path d="M8 22h8"/>
-                        <path d="M10 18h4"/>
-                    </svg>
-                </div>
-                <div class="brand-text-block">
-                    <span class="brand-title">بساط ناب</span>
-                    <span class="brand-tagline">آباژور و دکوراتیو وینتیج</span>
-                </div>
-            </a>
+            <!-- Brand Identity -->
+            <div class="brand-wrapper">
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="brand-link">
+                    <div class="brand-logo-icon">
+                        <!-- Vintage Lamp SVG Icon -->
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 2h6l3 7H6l3-7z"/>
+                            <path d="M12 9v9"/>
+                            <path d="M8 22h8"/>
+                            <path d="M10 18h4"/>
+                        </svg>
+                    </div>
+                    <div class="brand-text-block">
+                        <span class="brand-title">بساط ناب</span>
+                        <span class="brand-tagline">آباژور و دکوراتیو وینتیج</span>
+                    </div>
+                </a>
+            </div>
         </div>
 
-        <!-- Search Bar -->
+        <!-- Search Bar (Row 2 on Mobile, Center on Desktop) -->
         <div class="header-search">
             <form role="search" method="get" class="search-form-wrapper" action="<?php echo esc_url(home_url('/')); ?>">
                 <input type="hidden" name="post_type" value="product">
@@ -64,7 +67,7 @@
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </button>
             </form>
-            <div id="live-search-results" style="display:none; position:absolute; top:calc(100% + 8px); left:0; right:0; background:#fff; border:1px solid var(--color-border); border-radius:var(--radius-md); box-shadow:var(--shadow-lg); z-index:110; max-height:320px; overflow-y:auto;"></div>
+            <div id="live-search-results" class="live-search-results-dropdown"></div>
         </div>
 
         <!-- Actions -->
@@ -79,7 +82,7 @@
             <?php 
             $account_url = function_exists('wc_get_page_permalink') ? wc_get_page_permalink('myaccount') : wp_login_url();
             ?>
-            <a href="<?php echo esc_url($account_url); ?>" class="action-btn" title="حساب کاربری">
+            <a href="<?php echo esc_url($account_url); ?>" class="action-btn account-pill" title="حساب کاربری">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 <span class="d-none d-lg-inline"><?php echo is_user_logged_in() ? 'حساب من' : 'ورود / ثبت‌نام'; ?></span>
             </a>

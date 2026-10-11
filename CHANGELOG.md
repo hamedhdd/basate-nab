@@ -5,6 +5,21 @@ All notable changes to the **Basate Nab** WordPress Theme project will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-10-11
+
+### Fixed
+- **Mobile Responsive Header & Layout Overflow**:
+  - Implemented authentic 2-row mobile header matching `noor3tar.ir`:
+    - **Row 1**: Hamburger drawer button + brand logo & title (`بساط ناب`) on the right; Instagram pill, user account icon, and WooCommerce cart badge on the left.
+    - **Row 2**: Full-width responsive search bar directly below Row 1 with live AJAX product suggestions dropdown.
+  - Added comprehensive responsive display utilities (`.d-none`, `.d-block`, `.d-inline`, `.d-flex`, `.d-sm-*`, `.d-md-*`, `.d-lg-*`, `.d-xl-*`) resolving header overcrowding on screens under 992px.
+  - Eliminated horizontal viewport overflow (`320px` to `991px`) across all mobile and tablet viewports.
+  - Added mobile body bottom padding (`padding-bottom: calc(var(--mobile-bar-height) + 16px)`) preventing the fixed bottom app bar from obscuring footer content and SilverSky credits.
+- **Mobile Typography & Component Sizing**:
+  - Refined `.hero-main-card`, `.hero-title`, `.hero-btn-row`, `.special-offer-banner`, and `.trust-badges-grid` paddings and font sizes for high readability and compact presentation on small viewports.
+  - Adjusted `.products-grid` card padding and title clamp heights for clean side-by-side 2-column mobile viewing.
+  - Optimized `.top-announcement` bar to center text and hide extraneous elements on narrow devices.
+
 ## [1.2.0] - 2026-10-10
 
 ### Changed
