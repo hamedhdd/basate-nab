@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('BASATE_VERSION', '1.0.1');
+define('BASATE_VERSION', '1.0.2');
 define('BASATE_DIR', get_template_directory());
 define('BASATE_URI', get_template_directory_uri());
 
@@ -438,5 +438,31 @@ function basate_nab_disable_coming_soon() {
     }
 }
 add_action('init', 'basate_nab_disable_coming_soon');
+
+// 10. Enable Customer Registration on WooCommerce My Account Page
+function basate_nab_enable_customer_registration() {
+    // 1. Enable WordPress core registration
+    if (get_option('users_can_register') != 1) {
+        update_option('users_can_register', 1);
+    }
+    // 2. Enable WooCommerce My Account registration
+    if (get_option('woocommerce_enable_myaccount_registration') !== 'yes') {
+        update_option('woocommerce_enable_myaccount_registration', 'yes');
+    }
+    // 3. Allow customer to choose their password directly during registration
+    if (get_option('woocommerce_registration_generate_password') !== 'no') {
+        update_option('woocommerce_registration_generate_password', 'no');
+    }
+    // 4. Allow customer to choose their username
+    if (get_option('woocommerce_registration_generate_username') !== 'no') {
+        update_option('woocommerce_registration_generate_username', 'no');
+    }
+    // 5. Enable checkout registration
+    if (get_option('woocommerce_enable_signup_and_login_from_checkout') !== 'yes') {
+        update_option('woocommerce_enable_signup_and_login_from_checkout', 'yes');
+    }
+}
+add_action('init', 'basate_nab_enable_customer_registration');
+
 
 

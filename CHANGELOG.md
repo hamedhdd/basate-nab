@@ -5,6 +5,17 @@ All notable changes to the **Basate Nab** WordPress Theme project will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-10-11
+
+### Added
+- **Customer Registration & Dual Auth System (`/my-account/`)**:
+  - Enabled WordPress core membership (`users_can_register = 1`) and WooCommerce customer account registration (`woocommerce_enable_myaccount_registration = yes`).
+  - Enabled direct password specification during registration (`woocommerce_registration_generate_password = no`) allowing customers to set their credentials immediately without email dependence.
+  - Enabled username selection (`woocommerce_registration_generate_username = no`) and checkout registration (`woocommerce_enable_signup_and_login_from_checkout = yes`).
+  - Created dedicated WooCommerce template override [`woocommerce/myaccount/form-login.php`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/woocommerce/myaccount/form-login.php) featuring side-by-side Login & Registration cards on desktop and tabbed switching on mobile.
+  - Implemented interactive tab switching and smooth scrolling in [`assets/js/main.js`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/assets/js/main.js) (`initAuthTabs`).
+  - Added vintage retro card styling for login and registration forms in [`assets/css/main.css`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/assets/css/main.css) with golden focus rings, icons, and RTL-tailored typography.
+
 ## [1.3.0] - 2026-10-11
 
 ### Fixed

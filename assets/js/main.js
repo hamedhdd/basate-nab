@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCountdown();
   initLiveSearch();
   initMobileNavSync();
+  initAuthTabs();
 });
 
 // 1. Mobile Drawer (Navigation & Categories)
@@ -174,3 +175,74 @@ function initMobileNavSync() {
     }
   });
 }
+
+// 7. Customer Auth Tabs Switching (Login & Register)
+function initAuthTabs() {
+  const loginTabBtn = document.getElementById('tab-login-btn');
+  const registerTabBtn = document.getElementById('tab-register-btn');
+  const loginCol = document.getElementById('customer_login_col');
+  const registerCol = document.getElementById('customer_register_col');
+
+  if (!loginTabBtn || !registerTabBtn || !loginCol || !registerCol) return;
+
+  function showLogin() {
+    loginTabBtn.classList.add('active');
+    registerTabBtn.classList.remove('active');
+    if (window.innerWidth < 900) {
+      loginCol.style.display = 'block';
+      registerCol.style.display = 'none';
+    }
+  }
+
+  function showRegister() {
+    registerTabBtn.classList.add('active');
+    loginTabBtn.classList.remove('active');
+    if (window.innerWidth < 900) {
+      registerCol.style.display = 'block';
+      loginCol.style.display = 'none';
+    }
+  }
+
+  loginTabBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    showLogin();
+  });
+
+  registerTabBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    showRegister();
+  });
+
+  document.querySelectorAll('.auth-switch-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = link.getAttribute('href');
+      if (target === '#customer_register_col') {
+        showRegister();
+      } else {
+        showLogin();
+      }
+      const pageWrapper = document.querySelector('.auth-page-wrapper');
+      if (pageWrapper) {
+        window.scrollTo({ top: pageWrapper.offsetTop - 80, behavior: 'smooth' });
+      }
+    });
+  });
+
+  function handleResize() {
+    if (window.innerWidth < 900) {
+      if (window.location.hash === '#customer_register_col') {
+        showRegister();
+      } else {
+        showLogin();
+      }
+    } else {
+      loginCol.style.display = '';
+      registerCol.style.display = '';
+    }
+  }
+
+  handleResize();
+  window.addEventListener('resize', handleResize);
+}
+
