@@ -461,11 +461,11 @@ get_header();
             </div>
         </section>
 
-        <!-- 8. Instagram Showcase Section (@basate_nab) -->
+        <!-- 8. Social Channels Showcase Section (@basate_nab) -->
         <section class="instagram-showcase-box">
             <div class="instagram-title-area">
-                <h3>همراه ما در اینستاگرام بساط ناب باشید</h3>
-                <p>جدیدترین آنتیک‌های وارداتی، ویدیوهای معرفی محصولات و استوری‌های تخفیف روزانه را در پیج دنبال کنید</p>
+                <h3>همراه ما در شبکه‌های اجتماعی بساط ناب باشید</h3>
+                <p>جدیدترین محصولات آنتیک، آثار دست‌ساز و تخفیف‌های ویژه را در اینستاگرام، تلگرام و بله دنبال کنید</p>
             </div>
             <div class="instagram-gallery-grid">
                 <?php 
