@@ -124,3 +124,12 @@ python deploy_sync.py
 2. به پنل مدیریت وردپرس لاگین می‌کند.
 3. فایل را آپلود کرده و جایگزین نسخه قبلی می‌نماید.
 4. پوسته را فعال کرده و درستی عملکرد اندپوینت لایو را تایید می‌کند.
+
+---
+
+## ۵. جریان کار بنیادین پروژه و قوانین توسعه (Project Flow & Guidelines)
+
+برای مشاهده چرخه ۵ مرحله‌ای استقرار، راهنمای پیشگیری از لوپ‌های تحلیل فایل‌های CSS/PHP و استانداردهای توسعه، مستند زیر را بررسی نمایید:
+* [راهنمای جامع جریان توسعه و استقرار (PROJECT_FLOW.md)](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/PROJECT_FLOW.md)
+* [سند سراسری در Antigravity Docs](file:///C:/Users/Hamed/Documents/Antigravity_Docs/FUNDAMENTAL_PROJECT_FLOW.md)
+

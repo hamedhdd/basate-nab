@@ -5,6 +5,14 @@ All notable changes to the **Basate Nab** WordPress Theme project will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.1] - 2026-10-12
+
+### Added
+- **Fundamental Project Flow & Anti-Stall Documentation (`PROJECT_FLOW.md`)**:
+  - Authored comprehensive project lifecycle guidelines and operational protocols for Basate Nab in [`PROJECT_FLOW.md`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/PROJECT_FLOW.md) and persistent global document [`FUNDAMENTAL_PROJECT_FLOW.md`](file:///C:/Users/Hamed/Documents/Antigravity_Docs/FUNDAMENTAL_PROJECT_FLOW.md).
+  - Formalized the 5-step continuous lifecycle flow: (1) Targeted Inspection & Anti-Stall, (2) Living Documentation, (3) Git & GitHub Push, (4) Automated Live Deployment & Verification, (5) Persistent Documentation Preservation.
+  - Added Rule 7 to global [`GEMINI.md`](file:///C:/Users/Hamed/.gemini/config/GEMINI.md) preventing agents from getting stalled on repetitive bulk CSS reads and ensuring rapid horizontal layout resolution.
+
 ## [1.9.0] - 2026-10-12
 
 ### Added
