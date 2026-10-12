@@ -5,6 +5,15 @@ All notable changes to the **Basate Nab** WordPress Theme project will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.1] - 2026-10-12
+
+### Fixed
+- **Desktop Top Navigation Bar Layout & Button Styles**:
+  - Resolved issue where top category navigation links wrapped into two lines or appeared square-like on desktop screens.
+  - Implemented single-line horizontal layout (`flex-wrap: nowrap; white-space: nowrap`) with smooth invisible horizontal overflow handling.
+  - Restored rounded pill styling (`border-radius: var(--radius-full)`) with consistent padding (`6px 12px`), optimal gap (`6px`), and active/hover glow in Logo Red (`#E5392E`).
+  - Ensured contact prompt and all 10 product categories align cleanly in a single horizontal strip.
+
 ## [1.8.0] - 2026-10-12
 
 ### Changed

@@ -559,31 +559,47 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 46px;
+  min-height: 48px;
+  gap: 16px;
 }
 
 .nav-strip-menu {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 6px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  padding: 4px 0;
+}
+
+.nav-strip-menu::-webkit-scrollbar {
+  display: none; /* WebKit */
 }
 
 .nav-strip-menu a {
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   font-weight: 600;
   color: #f1f5f9;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   position: relative;
-  padding: 8px 0;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
 }
 
-.nav-strip-menu a:hover, .nav-strip-menu a.active {
+.nav-strip-menu a:hover, 
+.nav-strip-menu a.active {
   color: #ffffff;
-  background: rgba(229, 57, 46, 0.9);
-  border-radius: 6px;
-  padding: 6px 12px;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(229, 57, 46, 0.35);
 }
 
 .nav-strip-menu a.highlight {
@@ -593,9 +609,11 @@ button, input, select, textarea {
 .nav-strip-contact {
   display: flex;
   align-items: center;
-  gap: 16px;
-  font-size: 0.85rem;
+  gap: 12px;
+  font-size: 0.82rem;
   color: #cbd5e1;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Circular Categories Story Section (noor3tar.ir style) */
