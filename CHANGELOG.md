@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Unified Social Button Styles (Homepage & Product Page)**: Standardized all social action buttons (`Instagram`, `Telegram`, and `Bale`) on the homepage showcase and single product inquiry box to match the refined pill style (subtle gradient backgrounds, sleek border, matching typography, and branded hover states).
   - **Single Articles / Blog Posts**: Embedded `.post-social-channels-box` directly under the content of every blog post with dedicated join pills for Telegram, Bale, and Instagram.
   - **Single Product Page**: Enhanced inquiry box with quick-action links to Telegram, Bale, and Instagram Direct.
+  - **Top Navigation Category Bar**: Replaced the text link with 3 compact icon-only circular pill buttons for Instagram, Telegram, and Bale (`.nav-strip-social-icons`) with branded hover glows.
   - **Top Announcement Bar, Mobile Drawer, and Footer**: Added Telegram and Bale channel links with clean icons across all site layouts.
 
 ## [1.8.1] - 2026-10-12

@@ -653,11 +653,54 @@ button, input, select, textarea {
 .nav-strip-contact {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 0.82rem;
-  color: #cbd5e1;
+  gap: 8px;
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+.nav-strip-social-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-strip-social-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  text-decoration: none !important;
+}
+
+.nav-strip-social-btn.ig:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(229, 57, 46, 0.4);
+  transform: translateY(-2px);
+}
+
+.nav-strip-social-btn.tg:hover {
+  background: #229ED9;
+  border-color: #229ED9;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(34, 158, 217, 0.4);
+  transform: translateY(-2px);
+}
+
+.nav-strip-social-btn.bale:hover {
+  background: #00A693;
+  border-color: #00A693;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 166, 147, 0.4);
+  transform: translateY(-2px);
 }
 
 /* Circular Categories Story Section (noor3tar.ir style) */
