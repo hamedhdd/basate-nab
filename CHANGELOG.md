@@ -5,6 +5,22 @@ All notable changes to the **Basate Nab** WordPress Theme project will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2026-10-12
+
+### Added
+- **Essential WordPress Add-ons Suite (SilverSky Parity)**:
+  - **All in One SEO (AIOSEO)** (`all-in-one-seo-pack`): Installed and activated for catalog-wide TruSEO, dynamic meta descriptions, Open Graph, Twitter Cards, and Google Sitemaps.
+  - **AIOSEO Broken Link Checker** (`broken-link-checker-seo`): Installed and activated for automated link integrity monitoring.
+  - **WP-Parsidate** (`wp-parsidate`): Installed and activated for native Solar Hijri (Shamsi / Jalali) date conversion and Persian numerals.
+  - **Smush Image Optimizer** (`wp-smushit`): Installed and activated for automated image compression, WebP conversions, and lazy loading.
+  - **Google Analytics / MonsterInsights** (`google-analytics-for-wordpress`): Installed and activated for store metrics and audience analytics.
+  - **Persian WooCommerce SMS** (`persian-woocommerce-sms`): Installed and activated for Iranian customer notification infrastructure.
+- **Theme Integration & Zero-Conflict Architecture**:
+  - Implemented `basate_nab_date()` in `functions.php` with direct hooks into `get_the_date` using WP-Parsidate's `parsidate()` engine and zero-dependency fallbacks.
+  - Added duplicate SEO tag detection in `basate_nab_seo_meta_tags()` ensuring graceful delegation when AIOSEO is active.
+  - Hooked `aioseo_robots_meta` to guarantee search engines crawl paginated WooCommerce archives without erroneous `noindex` / `nofollow` tags.
+  - Updated footer copyright to display current Shamsi year (`۱۴۰۵`) dynamically via `basate_nab_date('Y')`.
+
 ## [1.9.1] - 2026-10-12
 
 ### Added

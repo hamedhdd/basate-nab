@@ -80,6 +80,15 @@
 * **مخزن گیت‌هاب:** `https://github.com/hamedhdd/basate-nab`
 * **مستندات و ران‌بوک عملیاتی:** `C:\Users\Hamed\Documents\Antigravity_Docs\basate_nab_wordpress_tech_runbook.md`
 
+### افزونه‌های ضروری فعال (Installed Add-ons / Plugins Matching SilverSky):
+* **All in One SEO (AIOSEO)** (`all-in-one-seo-pack`): مدیریت جامع سئو، اسکیما و سایت‌مپ.
+* **AIOSEO Broken Link Checker** (`broken-link-checker-seo`): پایش مستمر سلامت پیوندها.
+* **WP-Parsidate (پارسی‌ساز وردپرس)** (`wp-parsidate`): تقویم هجری شمسی، اصلاح اعداد و بهینه‌سازی پیوند یکتا.
+* **Smush** (`wp-smushit`): فشرده‌سازی خودکار تصاویر و WebP.
+* **Google Analytics (MonsterInsights)** (`google-analytics-for-wordpress`): آمارگیر و ترکینگ کاربران.
+* **Persian WooCommerce SMS** (`persian-woocommerce-sms`): زیرساخت پیامکی سفارشات مشتریان ایرانی.
+* **WooCommerce** (`woocommerce`): هسته فروشگاه اینترنتی.
+
 ---
 
 ## ۳. ساختار فایل‌های پوسته (Theme Structure)

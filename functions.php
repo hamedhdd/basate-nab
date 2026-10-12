@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('BASATE_VERSION', '1.1.0');
+define('BASATE_VERSION', '1.2.0');
 define('BASATE_DIR', get_template_directory());
 define('BASATE_URI', get_template_directory_uri());
 
@@ -83,6 +83,38 @@ function basate_fa_num($number) {
     return str_replace($en, $fa, (string)$number);
 }
 
+// Persian Shamsi / Jalali Date Formatter supporting WP-Parsidate
+function basate_nab_date($format = 'j F Y', $timestamp = null, $post_id = null) {
+    if ($timestamp === null) {
+        if ($post_id) {
+            $timestamp = get_post_time('U', false, $post_id);
+        } else {
+            $timestamp = get_the_time('U') ? get_the_time('U') : current_time('timestamp');
+        }
+    }
+
+    if (function_exists('parsidate')) {
+        $res = parsidate($format, $timestamp);
+        if (!empty($res)) {
+            return basate_fa_num($res);
+        }
+    }
+    if (function_exists('jdate')) {
+        $res = jdate($format, $timestamp);
+        if (!empty($res)) {
+            return basate_fa_num($res);
+        }
+    }
+    return basate_fa_num(date_i18n($format, $timestamp));
+}
+
+// Global filter on get_the_date to format into Shamsi Jalali date via WP-Parsidate
+add_filter('get_the_date', function($the_date, $format, $post) {
+    if (!$post) return $the_date;
+    $post_id = is_object($post) ? $post->ID : (int)$post;
+    return basate_nab_date($format ?: 'j F Y', null, $post_id);
+}, 20, 3);
+
 // 3.1. Editorial Blog Image Resolver (Guarantees zero usage of store product images for blog)
 function basate_nab_get_blog_post_image_url($post_id = 0) {
     if (!$post_id) {
@@ -143,6 +175,11 @@ function basate_nab_cart_fragments($fragments) {
 
 // 5. Advanced SEO Optimization Engine (Standards matching silversky.ir)
 function basate_nab_seo_meta_tags() {
+    // If an external SEO plugin (AIOSEO, Yoast, RankMath) is active, avoid duplicate Open Graph / Twitter / description tags
+    if (defined('AIOSEO_VERSION') || function_exists('aioseo') || defined('WPSEO_VERSION') || class_exists('RankMath')) {
+        return;
+    }
+
     $site_title = get_bloginfo('name') ?: 'بساط ناب';
     $site_desc = get_bloginfo('description') ?: 'فروشگاه تخصصی آباژور و دکوراتیو وینتیج، تابلوهای رترو و وسایل آنتیک بساط ناب با ارسال ایمن به سراسر کشور';
     $canonical_url = is_front_page() ? home_url('/') : get_permalink();
@@ -204,6 +241,17 @@ function basate_nab_seo_meta_tags() {
     echo "<!-- /Basate Nab Advanced SEO Engine -->\n\n";
 }
 add_action('wp_head', 'basate_nab_seo_meta_tags', 1);
+
+// Ensure Googlebot crawls and indexes paginated catalog pages when AIOSEO is active
+add_filter('aioseo_robots_meta', function($attributes) {
+    if (is_paged() || (int) get_query_var('paged') > 1) {
+        if (is_array($attributes)) {
+            unset($attributes['noindex']);
+            unset($attributes['nofollow']);
+        }
+    }
+    return $attributes;
+});
 
 // JSON-LD Schema Generator
 function basate_nab_schema_jsonld() {
