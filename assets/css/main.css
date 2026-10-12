@@ -1423,6 +1423,10 @@ button, input, select, textarea {
   border-radius: var(--radius-full);
   transition: all 0.25s ease;
   text-decoration: none !important;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .social-cta-btn svg {
@@ -1430,43 +1434,44 @@ button, input, select, textarea {
 }
 
 .instagram-cta-btn {
-  background: var(--color-secondary);
-  color: #ffffff;
-  border: 1.5px solid var(--color-primary);
+  background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+  border-color: #cbd5e1;
+  color: var(--color-secondary);
 }
 
 .instagram-cta-btn:hover {
-  background: var(--color-primary);
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(229, 57, 46, 0.35);
+  background: #ffffff;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: 0 4px 14px rgba(229, 57, 46, 0.25);
   transform: translateY(-2px);
 }
 
 .telegram-cta-btn {
-  background: #229ED9;
-  color: #ffffff;
-  border: 1.5px solid #229ED9;
+  background: linear-gradient(135deg, #eef7fc 0%, #ffffff 100%);
+  border-color: #cbd5e1;
+  color: #229ED9;
 }
 
 .telegram-cta-btn:hover {
-  background: #1b87ba;
-  border-color: #1b87ba;
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(34, 158, 217, 0.4);
+  background: #ffffff;
+  border-color: #229ED9;
+  color: #229ED9;
+  box-shadow: 0 4px 14px rgba(34, 158, 217, 0.25);
   transform: translateY(-2px);
 }
 
 .bale-cta-btn {
-  background: #00A693;
-  color: #ffffff;
-  border: 1.5px solid #00A693;
+  background: linear-gradient(135deg, #eef9f8 0%, #ffffff 100%);
+  border-color: #cbd5e1;
+  color: #00A693;
 }
 
 .bale-cta-btn:hover {
-  background: #008f7e;
-  border-color: #008f7e;
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(0, 166, 147, 0.4);
+  background: #ffffff;
+  border-color: #00A693;
+  color: #00A693;
+  box-shadow: 0 4px 14px rgba(0, 166, 147, 0.25);
   transform: translateY(-2px);
 }
 
@@ -2278,7 +2283,7 @@ button, input, select, textarea {
     margin-bottom: 18px;
   }
 
-  .instagram-cta-btn {
+  .social-cta-btn {
     font-size: 0.84rem;
     padding: 9px 18px;
     width: 100%;
