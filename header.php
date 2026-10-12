@@ -126,8 +126,8 @@
                     وبلاگ و دانشنامه
                 </a>
             </nav>
-            <div class="nav-strip-contact">
-                <div class="nav-strip-social-icons">
+            <div class="nav-strip-contact" style="display:flex !important; flex-direction:row !important; align-items:center !important;">
+                <div class="nav-strip-social-icons" style="display:flex !important; flex-direction:row !important; align-items:center !important; gap:8px !important;">
                     <a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener noreferrer" class="nav-strip-social-btn ig" title="پیج اینستاگرام بساط ناب" aria-label="اینستاگرام">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     </a>
