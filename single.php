@@ -48,8 +48,35 @@ get_header();
                     <?php the_content(); ?>
                 </div>
 
+                <!-- Social Channels Box Under Every Post -->
+                <div class="post-social-channels-box">
+                    <div class="post-social-header">
+                        <div class="post-social-icon-badge">
+                            ✨
+                        </div>
+                        <div>
+                            <h4>عضویت در شبکه‌های بساط ناب</h4>
+                            <p>برای مشاهده ویدیوهای اختصاصی، معرفی کارهای جدید، موجودی لحظه‌ای و استعلام قیمت در کانال‌های رسمی ما عضو شوید:</p>
+                        </div>
+                    </div>
+                    <div class="post-social-links-grid">
+                        <a href="https://t.me/basate_nab" target="_blank" rel="noopener" class="channel-link-pill tg-channel">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.5 2.5-19 8.5 7 3.5 3.5 7 2-4.5 6.5 4.5 3-19z"/><path d="m9.5 14.5 12-12"/></svg>
+                            <span>کانال تلگرام @basate_nab</span>
+                        </a>
+                        <a href="https://ble.ir/basatenab" target="_blank" rel="noopener" class="channel-link-pill bale-channel">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="15" cy="12" r="1" fill="currentColor"/></svg>
+                            <span>کانال بله @basatenab</span>
+                        </a>
+                        <a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener" class="channel-link-pill ig-channel">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            <span>پیج اینستاگرام @basate_nab</span>
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Footer Author & Share Box -->
-                <div style="margin-top:40px; padding:24px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+                <div style="margin-top:24px; padding:24px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
                     <div style="display:flex; align-items:center; gap:14px;">
                         <div style="width:48px; height:48px; border-radius:50%; background:var(--color-primary); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.2rem;">
                             ب

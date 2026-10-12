@@ -40,12 +40,16 @@
                 <h4>ارتباط با ما</h4>
                 <ul class="footer-links-list">
                     <li>
-                        <strong>تلفن و مشاوره:</strong>
-                        <span>—</span>
+                        <strong>کانال تلگرام:</strong>
+                        <a href="https://t.me/basate_nab" target="_blank" rel="noopener" style="color:#229ED9; font-weight:700;">t.me/basate_nab</a>
                     </li>
                     <li>
-                        <strong>سفارش آنلاین اینستاگرام:</strong>
-                        <a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener">@basate_nab</a>
+                        <strong>کانال بله:</strong>
+                        <a href="https://ble.ir/basatenab" target="_blank" rel="noopener" style="color:#00A693; font-weight:700;">ble.ir/basatenab</a>
+                    </li>
+                    <li>
+                        <strong>پیج اینستاگرام:</strong>
+                        <a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener" style="color:var(--color-primary); font-weight:700;">@basate_nab</a>
                     </li>
                     <li>
                         <strong>ساعات پاسخگویی:</strong>
@@ -60,7 +64,7 @@
 
             <!-- Col 4: Trust Badges & Socials -->
             <div class="footer-col">
-                <h4>مجوزها و اصالت خرید</h4>
+                <h4>مجوزها و شبکه‌های رسمی</h4>
                 <div class="footer-trust-box">
                     <div class="trust-badge-placeholder" title="نماد اعتماد الکترونیکی">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -69,9 +73,18 @@
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-dark)" stroke-width="1.8"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
                     </div>
                 </div>
-                <div style="margin-top:16px;">
+                <div style="margin-top:16px; display:flex; flex-direction:column; gap:8px;">
+                    <a href="https://t.me/basate_nab" target="_blank" rel="noopener" class="action-btn" style="width:100%; justify-content:center; background:#229ED9; color:#fff; border-color:#229ED9;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.5 2.5-19 8.5 7 3.5 3.5 7 2-4.5 6.5 4.5 3-19z"/><path d="m9.5 14.5 12-12"/></svg>
+                        <span>کانال تلگرام بساط ناب</span>
+                    </a>
+                    <a href="https://ble.ir/basatenab" target="_blank" rel="noopener" class="action-btn" style="width:100%; justify-content:center; background:#00A693; color:#fff; border-color:#00A693;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="15" cy="12" r="1" fill="currentColor"/></svg>
+                        <span>کانال پیام‌رسان بله</span>
+                    </a>
                     <a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener" class="action-btn instagram-pill" style="width:100%; justify-content:center;">
-                        عضویت در اینستاگرام بساط ناب
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+                        <span>پیج اینستاگرام بساط ناب</span>
                     </a>
                 </div>
             </div>

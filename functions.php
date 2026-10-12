@@ -482,13 +482,25 @@ add_filter('woocommerce_get_price_html', '__return_empty_string', 99, 2);
 // Single Product Page: Inquire Box instead of Add to Cart
 add_action('woocommerce_single_product_summary', 'basate_nab_render_inquiry_box_on_single', 30);
 function basate_nab_render_inquiry_box_on_single() {
-    echo '<div class="product-inquire-box" style="margin:24px 0; padding:18px 22px; background:linear-gradient(135deg, #fcf9f3, #f5ecd9); border:1px solid #dfceb7; border-radius:12px;">';
-    echo '<p style="margin:0 0 10px; font-weight:700; color:#0f172a; font-size:0.95rem;">جهت استعلام موجودی، اطلاعات بیشتر و ثبت سفارش این اثر وینتیج:</p>';
-    echo '<a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener" class="btn-primary-retro" style="display:inline-flex; align-items:center; gap:8px; padding:10px 22px; width:fit-content;">';
-    echo '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>';
-    echo '<span>استعلام و ثبت سفارش در دایرکت @basate_nab</span>';
-    echo '</a>';
-    echo '</div>';
+    ?>
+    <div class="product-inquire-box" style="margin:24px 0; padding:20px 22px; background:linear-gradient(135deg, #f8fafc, #edf2f7); border:1.5px solid #cbd5e1; border-radius:14px;">
+        <p style="margin:0 0 12px; font-weight:700; color:var(--color-dark); font-size:0.95rem;">جهت استعلام موجودی، قیمت و ثبت سفارش این اثر وینتیج از طریق راه‌های ارتباطی زیر با ما در ارتباط باشید:</p>
+        <div style="display:flex; flex-wrap:wrap; gap:10px;">
+            <a href="https://t.me/basate_nab" target="_blank" rel="noopener" class="social-cta-btn telegram-cta-btn" style="padding:9px 18px; font-size:0.88rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.5 2.5-19 8.5 7 3.5 3.5 7 2-4.5 6.5 4.5 3-19z"/><path d="m9.5 14.5 12-12"/></svg>
+                <span>کانال تلگرام @basate_nab</span>
+            </a>
+            <a href="https://ble.ir/basatenab" target="_blank" rel="noopener" class="social-cta-btn bale-cta-btn" style="padding:9px 18px; font-size:0.88rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="15" cy="12" r="1" fill="currentColor"/></svg>
+                <span>کانال بله @basatenab</span>
+            </a>
+            <a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener" class="social-cta-btn instagram-cta-btn" style="padding:9px 18px; font-size:0.88rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <span>دایرکت اینستاگرام @basate_nab</span>
+            </a>
+        </div>
+    </div>
+    <?php
 }
 
 // 8. Clear all numerical prices from WooCommerce database products

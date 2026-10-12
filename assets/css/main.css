@@ -1360,24 +1360,174 @@ button, input, select, textarea {
   transform: scale(1.08);
 }
 
-.instagram-cta-btn {
+.social-channels-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social-cta-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  transition: all 0.25s ease;
+  text-decoration: none !important;
+}
+
+.social-cta-btn svg {
+  flex-shrink: 0;
+}
+
+.instagram-cta-btn {
   background: var(--color-secondary);
   color: #ffffff;
   border: 1.5px solid var(--color-primary);
-  font-weight: 700;
-  font-size: 0.95rem;
-  padding: 10px 24px;
-  border-radius: var(--radius-full);
-  transition: all 0.25s ease;
 }
 
 .instagram-cta-btn:hover {
   background: var(--color-primary);
   color: #ffffff;
   box-shadow: 0 4px 14px rgba(229, 57, 46, 0.35);
+  transform: translateY(-2px);
+}
+
+.telegram-cta-btn {
+  background: #229ED9;
+  color: #ffffff;
+  border: 1.5px solid #229ED9;
+}
+
+.telegram-cta-btn:hover {
+  background: #1b87ba;
+  border-color: #1b87ba;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(34, 158, 217, 0.4);
+  transform: translateY(-2px);
+}
+
+.bale-cta-btn {
+  background: #00A693;
+  color: #ffffff;
+  border: 1.5px solid #00A693;
+}
+
+.bale-cta-btn:hover {
+  background: #008f7e;
+  border-color: #008f7e;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 166, 147, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Post Bottom Channel Subscription Card */
+.post-social-channels-box {
+  margin: 40px 0 24px;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+  border: 1.5px solid #cbd5e1;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+  transition: border-color 0.2s ease;
+}
+
+.post-social-channels-box:hover {
+  border-color: var(--color-primary);
+}
+
+.post-social-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.post-social-icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.post-social-header h4 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-dark);
+  margin: 0 0 4px;
+}
+
+.post-social-header p {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.post-social-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.channel-link-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.channel-link-pill.ig-channel {
+  background: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+}
+
+.channel-link-pill.ig-channel:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(229, 57, 46, 0.35);
+  transform: translateY(-2px);
+}
+
+.channel-link-pill.tg-channel {
+  background: #229ED9;
+  border: 1px solid #229ED9;
+}
+
+.channel-link-pill.tg-channel:hover {
+  background: #1b87ba;
+  box-shadow: 0 4px 12px rgba(34, 158, 217, 0.4);
+  transform: translateY(-2px);
+}
+
+.channel-link-pill.bale-channel {
+  background: #00A693;
+  border: 1px solid #00A693;
+}
+
+.channel-link-pill.bale-channel:hover {
+  background: #008f7e;
+  box-shadow: 0 4px 12px rgba(0, 166, 147, 0.4);
+  transform: translateY(-2px);
 }
 
 /* Site Footer */
