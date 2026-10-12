@@ -52,7 +52,7 @@ function basate_nab_get_initial_seo_posts() {
     $floor_lamps = home_url('/product-category/floor-lamps/');
     $retro_frames = home_url('/product-category/retro-frames/');
     $vintage_decor = home_url('/product-category/vintage-decor/');
-    $gramophone_radio = home_url('/product-category/gramophone-radio/');
+    $decorative_clocks = home_url('/product-category/decorative-clocks/');
 
     return array(
         // Post 1
@@ -233,8 +233,8 @@ function basate_nab_get_initial_seo_posts() {
     </div>
     <p>برای تکمیل دکور میز کار یا کتابخانه با تلفن‌های وینتیج، رادیوهای قدیمی و اشیای کلکسیونی، از گنجینه بساط ناب دیدن نمایید.</p>
     <div class="ref-action-buttons">
-        <a href="' . $vintage_decor . '" class="ref-btn">مشاهده اکسسوری‌های وینتیج &larr;</a>
-        <a href="' . $gramophone_radio . '" class="ref-btn ref-btn-secondary">مشاهده رادیو و گرامافون &larr;</a>
+        <a href="' . $vintage_decor . '" class="ref-btn">مشاهده وسایل وینتیج &larr;</a>
+        <a href="' . $decorative_clocks . '" class="ref-btn ref-btn-secondary">مشاهده ساعت‌های دکوری &larr;</a>
     </div>
 </div>
 
@@ -420,27 +420,27 @@ function basate_nab_get_initial_seo_posts() {
 <h2>جمع‌بندی تفاوت‌ها در یک نگاه</h2>
 <table style="width:100%; border-collapse:collapse; margin:20px 0; text-align:right;">
     <thead>
-        <tr style="background:#f4ece1; color:#231709;">
-            <th style="padding:10px; border:1px solid #ebd9c4;">سبک</th>
-            <th style="padding:10px; border:1px solid #ebd9c4;">بازه زمانی</th>
-            <th style="padding:10px; border:1px solid #ebd9c4;">ویژگی کلیدی</th>
+        <tr style="background:#f1f5f9; color:#0f172a;">
+            <th style="padding:10px; border:1px solid #e2e8f0;">سبک</th>
+            <th style="padding:10px; border:1px solid #e2e8f0;">بازه زمانی</th>
+            <th style="padding:10px; border:1px solid #e2e8f0;">ویژگی کلیدی</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td style="padding:10px; border:1px solid #ebd9c4;">آنتیک</td>
-            <td style="padding:10px; border:1px solid #ebd9c4;">بیش از ۱۰۰ سال</td>
-            <td style="padding:10px; border:1px solid #ebd9c4;">ارزش موزه‌ای، دست‌ساز تاریخی</td>
+            <td style="padding:10px; border:1px solid #e2e8f0;">آنتیک</td>
+            <td style="padding:10px; border:1px solid #e2e8f0;">بیش از ۱۰۰ سال</td>
+            <td style="padding:10px; border:1px solid #e2e8f0;">ارزش موزه‌ای، دست‌ساز تاریخی</td>
         </tr>
         <tr>
-            <td style="padding:10px; border:1px solid #ebd9c4;">وینتیج</td>
-            <td style="padding:10px; border:1px solid #ebd9c4;">۲۰ الی ۱۰۰ سال</td>
-            <td style="padding:10px; border:1px solid #ebd9c4;">نماینده دوران طلایی قرن بیستم</td>
+            <td style="padding:10px; border:1px solid #e2e8f0;">وینتیج</td>
+            <td style="padding:10px; border:1px solid #e2e8f0;">۲۰ الی ۱۰۰ سال</td>
+            <td style="padding:10px; border:1px solid #e2e8f0;">نماینده دوران طلایی قرن بیستم</td>
         </tr>
         <tr>
-            <td style="padding:10px; border:1px solid #ebd9c4;">رترو</td>
-            <td style="padding:10px; border:1px solid #ebd9c4;">تولید جدید</td>
-            <td style="padding:10px; border:1px solid #ebd9c4;">طراحی نوستالژیک با استانداردهای مدرن</td>
+            <td style="padding:10px; border:1px solid #e2e8f0;">رترو</td>
+            <td style="padding:10px; border:1px solid #e2e8f0;">تولید جدید</td>
+            <td style="padding:10px; border:1px solid #e2e8f0;">طراحی نوستالژیک با استانداردهای مدرن</td>
         </tr>
     </tbody>
 </table>

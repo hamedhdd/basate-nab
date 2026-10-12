@@ -9,11 +9,11 @@ get_header();
 <main id="primary" class="site-main">
     <div class="container">
 
-        <!-- 1. Category Stories (Circular Navigation) -->
+        <!-- 1. Category Stories (Circular Navigation - 10 Requested Categories) -->
         <section class="category-stories-section">
             <div class="category-stories-scroll">
-                <!-- Category 1 -->
-                <a href="<?php echo esc_url(home_url('/?s=آباژور+رومیزی&post_type=product')); ?>" class="story-item">
+                <!-- 1. آباژور رومیزی -->
+                <a href="<?php echo esc_url(home_url('/product-category/table-lamps/')); ?>" class="story-item">
                     <div class="story-circle">
                         <div class="story-circle-inner">
                             <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 2h6l3 7H6l3-7z"/><path d="M12 9v9"/><path d="M8 22h8"/></svg>
@@ -22,64 +22,94 @@ get_header();
                     <span class="story-label">آباژور رومیزی</span>
                 </a>
 
-                <!-- Category 2 -->
-                <a href="<?php echo esc_url(home_url('/?s=آباژور+ایستاده&post_type=product')); ?>" class="story-item">
+                <!-- 2. آباژور قدی -->
+                <a href="<?php echo esc_url(home_url('/product-category/floor-lamps/')); ?>" class="story-item">
                     <div class="story-circle">
                         <div class="story-circle-inner">
                             <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4l2 6H8l2-6z"/><line x1="12" y1="8" x2="12" y2="21"/><line x1="7" y1="21" x2="17" y2="21"/></svg>
                         </div>
                     </div>
-                    <span class="story-label">آباژور سالنی</span>
+                    <span class="story-label">آباژور قدی</span>
                 </a>
 
-                <!-- Category 3 -->
-                <a href="<?php echo esc_url(home_url('/?s=تابلو+رترو&post_type=product')); ?>" class="story-item">
+                <!-- 3. لوستر -->
+                <a href="<?php echo esc_url(home_url('/product-category/chandeliers/')); ?>" class="story-item">
                     <div class="story-circle">
                         <div class="story-circle-inner">
-                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="2" x2="12" y2="8"/><path d="M4 10c0 4 3.5 7 8 7s8-3 8-7"/><path d="M5 10v-2"/><path d="M19 10v-2"/><path d="M12 17v4"/><circle cx="12" cy="10" r="1.5"/></svg>
+                        </div>
+                    </div>
+                    <span class="story-label">لوستر</span>
+                </a>
+
+                <!-- 4. چراغ مطالعه -->
+                <a href="<?php echo esc_url(home_url('/product-category/study-lamps/')); ?>" class="story-item">
+                    <div class="story-circle">
+                        <div class="story-circle-inner">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 21h14"/><path d="M8 21v-4l4-8 4-4"/><circle cx="16" cy="5" r="2.5"/><path d="M12 9l4 2"/></svg>
+                        </div>
+                    </div>
+                    <span class="story-label">چراغ مطالعه</span>
+                </a>
+
+                <!-- 5. چراغ دیواری -->
+                <a href="<?php echo esc_url(home_url('/product-category/wall-lamps/')); ?>" class="story-item">
+                    <div class="story-circle">
+                        <div class="story-circle-inner">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8v8"/><path d="M4 12h6"/><path d="M10 8l4-3v7l-4-1z"/><circle cx="17" cy="10" r="2"/></svg>
+                        </div>
+                    </div>
+                    <span class="story-label">چراغ دیواری</span>
+                </a>
+
+                <!-- 6. ساعت دکوری -->
+                <a href="<?php echo esc_url(home_url('/product-category/decorative-clocks/')); ?>" class="story-item">
+                    <div class="story-circle">
+                        <div class="story-circle-inner">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 15 15"/><path d="M5 4L3 6"/><path d="M19 4l2 2"/></svg>
+                        </div>
+                    </div>
+                    <span class="story-label">ساعت دکوری</span>
+                </a>
+
+                <!-- 7. آینه محدب -->
+                <a href="<?php echo esc_url(home_url('/product-category/convex-mirrors/')); ?>" class="story-item">
+                    <div class="story-circle">
+                        <div class="story-circle-inner">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="6" stroke-dasharray="2 2"/><circle cx="12" cy="12" r="2"/></svg>
+                        </div>
+                    </div>
+                    <span class="story-label">آینه محدب</span>
+                </a>
+
+                <!-- 8. آینه های دکوری -->
+                <a href="<?php echo esc_url(home_url('/product-category/decorative-mirrors/')); ?>" class="story-item">
+                    <div class="story-circle">
+                        <div class="story-circle-inner">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="8"/><circle cx="12" cy="12" r="4"/></svg>
+                        </div>
+                    </div>
+                    <span class="story-label">آینه‌های دکوری</span>
+                </a>
+
+                <!-- 9. وسایل وینتیج -->
+                <a href="<?php echo esc_url(home_url('/product-category/vintage-decor/')); ?>" class="story-item">
+                    <div class="story-circle">
+                        <div class="story-circle-inner">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="4" x2="12" y2="9"/><path d="M12 15v5"/></svg>
+                        </div>
+                    </div>
+                    <span class="story-label">وسایل وینتیج</span>
+                </a>
+
+                <!-- 10. تابلو های رترو -->
+                <a href="<?php echo esc_url(home_url('/product-category/retro-frames/')); ?>" class="story-item">
+                    <div class="story-circle">
+                        <div class="story-circle-inner">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
                         </div>
                     </div>
                     <span class="story-label">تابلوهای رترو</span>
-                </a>
-
-                <!-- Category 4 -->
-                <a href="<?php echo esc_url(home_url('/?s=آنتیک&post_type=product')); ?>" class="story-item">
-                    <div class="story-circle">
-                        <div class="story-circle-inner">
-                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h12l-2 8H8L6 3z"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M7 21h10"/></svg>
-                        </div>
-                    </div>
-                    <span class="story-label">ظروف آنتیک</span>
-                </a>
-
-                <!-- Category 5 -->
-                <a href="<?php echo esc_url(home_url('/?s=گرامافون&post_type=product')); ?>" class="story-item">
-                    <div class="story-circle">
-                        <div class="story-circle-inner">
-                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="3" x2="12" y2="9"/></svg>
-                        </div>
-                    </div>
-                    <span class="story-label">گرامافون و رادیو</span>
-                </a>
-
-                <!-- Category 6 -->
-                <a href="<?php echo esc_url(home_url('/?s=ساعت+کلاسیک&post_type=product')); ?>" class="story-item">
-                    <div class="story-circle">
-                        <div class="story-circle-inner">
-                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        </div>
-                    </div>
-                    <span class="story-label">ساعت‌های رترو</span>
-                </a>
-
-                <!-- Category 7 -->
-                <a href="<?php echo esc_url(home_url('/?s=کهنه‌کاری&post_type=product')); ?>" class="story-item">
-                    <div class="story-circle">
-                        <div class="story-circle-inner">
-                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        </div>
-                    </div>
-                    <span class="story-label">دکوراتیو خاص</span>
                 </a>
             </div>
         </section>
@@ -374,7 +404,7 @@ get_header();
                     <span class="badge-antique" style="position:static; display:inline-block; margin-bottom:8px; padding:4px 12px; font-size:0.75rem;">دانشنامه و مقالات تخصصی</span>
                     <h3 style="font-size:1.45rem; font-weight:800; color:var(--color-dark); margin:0;">راهنمای دکوراسیون رترو، مید سنتری و نورپردازی وینتیج</h3>
                 </div>
-                <a href="<?php echo esc_url(home_url('/blog/')); ?>" class="view-all-link" style="display:inline-flex; align-items:center; gap:6px; color:var(--color-primary-hover); font-weight:700; font-size:0.9rem;">
+                <a href="<?php echo esc_url(home_url('/blog/')); ?>" class="view-all-link" style="display:inline-flex; align-items:center; gap:6px; color:var(--color-primary); font-weight:700; font-size:0.9rem;">
                     <span>مشاهده همه مقالات وبلاگ</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
                 </a>
@@ -390,7 +420,7 @@ get_header();
                 if ($recent_posts->have_posts()) :
                     while ($recent_posts->have_posts()) : $recent_posts->the_post();
                         ?>
-                        <article class="home-blog-card" style="background:#ffffff; border:1px solid #ebd9c4; border-radius:14px; overflow:hidden; box-shadow:0 3px 12px rgba(35,23,9,0.05); display:flex; flex-direction:column; transition:transform 0.2s ease;">
+                        <article class="home-blog-card" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:14px; overflow:hidden; box-shadow:0 3px 12px rgba(15,23,42,0.05); display:flex; flex-direction:column; transition:transform 0.2s ease;">
                             <?php 
                             $blog_img_url = basate_nab_get_blog_post_image_url(get_the_ID());
                             ?>
@@ -399,7 +429,7 @@ get_header();
                             </a>
                             <div style="padding:16px; display:flex; flex-direction:column; flex:1; justify-content:space-between;">
                                 <div>
-                                    <span style="font-size:0.75rem; color:var(--color-primary-hover); font-weight:600;"><?php echo basate_fa_num(get_the_date('j F Y')); ?></span>
+                                    <span style="font-size:0.75rem; color:var(--color-primary); font-weight:600;"><?php echo basate_fa_num(get_the_date('j F Y')); ?></span>
                                     <h4 style="font-size:0.98rem; font-weight:800; line-height:1.45; margin:6px 0 8px;">
                                         <a href="<?php the_permalink(); ?>" style="color:var(--color-dark); text-decoration:none;">
                                             <?php the_title(); ?>

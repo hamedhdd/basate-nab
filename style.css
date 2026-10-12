@@ -59,30 +59,36 @@ Tags: e-commerce, custom-colors, custom-menu, featured-images, rtl-language-supp
 /* Reset & CSS Custom Properties */
 :root {
   --font-family-base: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --color-primary: #b8860b;
-  --color-primary-hover: #996515;
-  --color-primary-light: #f7eedb;
-  --color-accent: #a8422b;
-  --color-accent-hover: #8c321d;
-  --color-dark: #231709;
-  --color-dark-surface: #2d1e12;
-  --color-bg: #fbf9f4;
+  --color-primary: #e5392e;           /* Logo Red */
+  --color-primary-hover: #c82319;     /* Deep Red */
+  --color-primary-light: #fde8e7;     /* Soft Red Tint */
+  --color-secondary: #16223b;         /* Logo Carbon Blue (آبی کربنی) */
+  --color-secondary-hover: #1e3a8a;   /* Vibrant Cobalt/Carbon Blue */
+  --color-secondary-light: #eef2f9;   /* Soft Carbon Tint */
+  --color-carbon-blue: #16223b;       /* Deep Carbon Blue */
+  --color-carbon-blue-alt: #1e3a8a;   /* Royal Carbon Blue */
+  --color-carbon-dark: #0f172a;       /* Midnight Carbon */
+  --color-accent: #e5392e;
+  --color-accent-hover: #c82319;
+  --color-dark: #0f172a;              /* Carbon Charcoal Base */
+  --color-dark-surface: #16223b;
+  --color-bg: #f8fafc;                /* Crisp Modern Off-White */
   --color-surface: #ffffff;
-  --color-surface-subtle: #f5f0e6;
-  --color-border: #eae2d3;
-  --color-border-dark: #cfc2aa;
-  --color-text-title: #231a14;
-  --color-text-body: #3c2e24;
-  --color-text-muted: #75675c;
+  --color-surface-subtle: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-border-dark: #cbd5e1;
+  --color-text-title: #0f172a;
+  --color-text-body: #334155;
+  --color-text-muted: #64748b;
   --color-text-on-dark: #ffffff;
-  --color-success: #2b7a4b;
+  --color-success: #16a34a;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
   --radius-full: 9999px;
-  --shadow-sm: 0 2px 6px rgba(35, 23, 9, 0.05);
-  --shadow-md: 0 4px 14px rgba(35, 23, 9, 0.08);
-  --shadow-lg: 0 10px 28px rgba(35, 23, 9, 0.12);
+  --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 14px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 10px 28px rgba(15, 23, 42, 0.12);
   --container-max: 1320px;
   --header-height: 76px;
   --mobile-bar-height: 64px;

@@ -21,12 +21,17 @@
             <div class="footer-col">
                 <h4>دسته‌بندی‌های محبوب</h4>
                 <ul class="footer-links-list">
-                    <li><a href="<?php echo esc_url(home_url('/?s=آباژور+رومیزی&post_type=product')); ?>">آباژور و چراغ‌های رومیزی</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/?s=آباژور+ایستاده&post_type=product')); ?>">آباژورهای ایستاده و سالنی</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/?s=تابلو+رترو&post_type=product')); ?>">تابلوهای رترو و قاب کهنه‌کاری</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/?s=گرامافون&post_type=product')); ?>">گرامافون، رادیو و والو کلاسیک</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/?s=آنتیک&post_type=product')); ?>">ظروف برنجی و اشیای آنتیک</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/blog/')); ?>" style="color:var(--color-primary);">وبلاگ و دانشنامه دکوراسیون رترو</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/product-category/table-lamps/')); ?>">آباژور رومیزی</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/product-category/floor-lamps/')); ?>">آباژور قدی</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/product-category/chandeliers/')); ?>">لوستر</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/product-category/study-lamps/')); ?>">چراغ مطالعه</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/product-category/wall-lamps/')); ?>">چراغ دیواری</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/product-category/decorative-clocks/')); ?>">ساعت دکوری</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/product-category/convex-mirrors/')); ?>">آینه محدب</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/product-category/decorative-mirrors/')); ?>">آینه‌های دکوری</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/product-category/vintage-decor/')); ?>">وسایل وینتیج</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/product-category/retro-frames/')); ?>">تابلوهای رترو</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/blog/')); ?>" style="color:var(--color-primary); font-weight:700;">وبلاگ و دانشنامه دکوراسیون رترو</a></li>
                 </ul>
             </div>
 

@@ -5,6 +5,32 @@ All notable changes to the **Basate Nab** WordPress Theme project will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2026-10-12
+
+### Changed
+- **Logo-Based Color Palette Overhaul (Red & Carbon Blue)**:
+  - Replaced legacy gold/walnut/cream color palette with authentic **Logo Red** (`#E5392E`) and **Carbon Blue (آبی کربنی)** (`#16223B`, `#1E3A8A`, `#0F172A`).
+  - Switched background to crisp, modern off-white slate (`#F8FAFC`) with clean borders (`#E2E8F0`).
+  - Updated all UI components (announcement bar, buttons, search bar, badges, category story rings, product cards, video showcase, and footer) to the new Red and Carbon Blue identity.
+  - Rendered authentic logo image (`assets/images/logo.jpg`) in the site header and mobile navigation drawer.
+
+### Added
+- **Exact 10 Product Categories Synchronization**:
+  - Implemented automated category synchronizer [`inc/category-seeder.php`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/inc/category-seeder.php) establishing the 10 exact categories requested:
+    1. *آباژور رومیزی* (`table-lamps`)
+    2. *آباژور قدی* (`floor-lamps`)
+    3. *لوستر* (`chandeliers`)
+    4. *چراغ مطالعه* (`study-lamps`)
+    5. *چراغ دیواری* (`wall-lamps`)
+    6. *ساعت دکوری* (`decorative-clocks`)
+    7. *آینه محدب* (`convex-mirrors`)
+    8. *آینه های دکوری* (`decorative-mirrors`)
+    9. *وسایل وینتیج* (`vintage-decor`)
+    10. *تابلو های رترو* (`retro-frames`)
+  - Mapped all 12 authentic store products across the new categories and purged legacy empty terms.
+  - Updated **Category Stories Bar** on homepage [`front-page.php`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/front-page.php) with all 10 categories and custom handcrafted SVG icons.
+  - Updated Desktop Navigation Bar, Mobile Navigation Drawer in [`header.php`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/header.php), and Footer Links in [`footer.php`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/footer.php) to feature all 10 categories.
+
 ## [1.7.0] - 2026-10-11
 
 ### Changed

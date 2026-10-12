@@ -35,20 +35,20 @@ get_header();
             if ($blog_query->have_posts()) :
                 while ($blog_query->have_posts()) : $blog_query->the_post();
                     ?>
-                    <article id="post-<?php the_ID(); ?>" <?php post_class('blog-card-item'); ?> style="background:#ffffff; border:1px solid #ebd9c4; border-radius:16px; overflow:hidden; box-shadow:0 4px 18px rgba(35,23,9,0.06); display:flex; flex-direction:column; transition:transform 0.25s ease, box-shadow 0.25s ease;">
+                    <article id="post-<?php the_ID(); ?>" <?php post_class('blog-card-item'); ?> style="background:#ffffff; border:1px solid #e2e8f0; border-radius:16px; overflow:hidden; box-shadow:0 4px 18px rgba(15,23,42,0.06); display:flex; flex-direction:column; transition:transform 0.25s ease, box-shadow 0.25s ease;">
                         <?php 
                         $blog_img_url = basate_nab_get_blog_post_image_url(get_the_ID());
                         $cats = get_the_category();
                         $cat_label = !empty($cats) ? esc_html($cats[0]->name) : 'دکوراسیون وینتیج';
                         ?>
-                        <a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>" style="display:block; height:210px; overflow:hidden; position:relative; background:#231709;">
+                        <a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>" style="display:block; height:210px; overflow:hidden; position:relative; background:#0f172a;">
                             <img src="<?php echo esc_url($blog_img_url); ?>" alt="<?php the_title_attribute(); ?>" style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;" loading="lazy">
-                            <span class="badge-antique" style="position:absolute; top:12px; right:12px; font-size:0.75rem; padding:3px 10px; background:rgba(35,23,9,0.85); color:#e6c888; border:1px solid #b8860b;"><?php echo $cat_label; ?></span>
+                            <span class="badge-antique" style="position:absolute; top:12px; right:12px; font-size:0.75rem; padding:3px 10px; background:rgba(15,23,42,0.9); color:#ffffff; border:1px solid var(--color-primary);"><?php echo $cat_label; ?></span>
                         </a>
 
                         <div style="padding:24px; display:flex; flex-direction:column; flex:1; justify-content:space-between;">
                             <div>
-                                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; font-size:0.8rem; color:var(--color-primary-hover); font-weight:700;">
+                                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; font-size:0.8rem; color:var(--color-primary); font-weight:700;">
                                     <span><?php echo basate_fa_num(get_the_date('j F Y')); ?></span>
                                     <span>بساط ناب</span>
                                 </div>
@@ -62,12 +62,12 @@ get_header();
                                 </p>
                             </div>
 
-                            <div style="padding-top:14px; border-top:1px solid #f2e9dc; display:flex; align-items:center; justify-content:space-between;">
+                            <div style="padding-top:14px; border-top:1px solid #f1f5f9; display:flex; align-items:center; justify-content:space-between;">
                                 <a href="<?php the_permalink(); ?>" style="color:var(--color-primary); font-weight:800; font-size:0.88rem; display:inline-flex; align-items:center; gap:6px;">
                                     <span>مطالعه مقاله کامل</span>
                                     <span>&larr;</span>
                                 </a>
-                                <span style="font-size:0.75rem; color:#a59584;">۵ دقیقه مطالعه</span>
+                                <span style="font-size:0.75rem; color:#64748b;">۵ دقیقه مطالعه</span>
                             </div>
                         </div>
                     </article>

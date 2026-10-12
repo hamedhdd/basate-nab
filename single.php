@@ -23,14 +23,14 @@ get_header();
                 <span style="color:var(--color-primary-hover); font-weight:600;"><?php the_title(); ?></span>
             </nav>
 
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> style="background:#fff; border:1px solid #ebd9c4; border-radius:18px; padding:36px; box-shadow:0 4px 20px rgba(35,23,9,0.06); max-width:920px; margin:0 auto;">
-                <header class="entry-header" style="margin-bottom:28px; border-bottom:1px solid #f2e7db; padding-bottom:20px;">
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> style="background:#fff; border:1px solid #e2e8f0; border-radius:18px; padding:36px; box-shadow:0 4px 20px rgba(15,23,42,0.06); max-width:920px; margin:0 auto;">
+                <header class="entry-header" style="margin-bottom:28px; border-bottom:1px solid #f1f5f9; padding-bottom:20px;">
                     <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px; flex-wrap:wrap;">
                         <span class="badge-antique" style="position:static; padding:4px 12px; font-size:0.78rem;"><?php echo $cat_name; ?></span>
-                        <span style="font-size:0.85rem; color:var(--color-primary-hover); font-weight:700;">
+                        <span style="font-size:0.85rem; color:var(--color-primary); font-weight:700;">
                             <?php echo basate_fa_num(get_the_date('j F Y')); ?>
                         </span>
-                        <span style="color:#d5c4b0;">•</span>
+                        <span style="color:#cbd5e1;">•</span>
                         <span style="font-size:0.85rem; color:var(--color-text-muted);">تحریریه تخصصی بساط ناب</span>
                     </div>
                     <h1 class="entry-title" style="font-size:1.9rem; font-weight:900; color:var(--color-dark); line-height:1.45; margin:0 0 10px;">
@@ -39,17 +39,17 @@ get_header();
                 </header>
 
                 <?php if ($blog_img_url) : ?>
-                    <div style="margin-bottom:32px; border-radius:14px; overflow:hidden; box-shadow:0 6px 22px rgba(35,23,9,0.1); background:#231709;">
+                    <div style="margin-bottom:32px; border-radius:14px; overflow:hidden; box-shadow:0 6px 22px rgba(15,23,42,0.1); background:#0f172a;">
                         <img src="<?php echo esc_url($blog_img_url); ?>" alt="<?php the_title_attribute(); ?>" style="width:100%; height:auto; max-height:480px; object-fit:cover; display:block;">
                     </div>
                 <?php endif; ?>
 
-                <div class="entry-content" style="line-height:2.05; font-size:1.06rem; color:#2b1f14;">
+                <div class="entry-content" style="line-height:2.05; font-size:1.06rem; color:#1e293b;">
                     <?php the_content(); ?>
                 </div>
 
                 <!-- Footer Author & Share Box -->
-                <div style="margin-top:40px; padding:24px; background:#faf7f2; border:1px solid #ebd9c4; border-radius:14px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+                <div style="margin-top:40px; padding:24px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
                     <div style="display:flex; align-items:center; gap:14px;">
                         <div style="width:48px; height:48px; border-radius:50%; background:var(--color-primary); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.2rem;">
                             ب
@@ -69,7 +69,7 @@ get_header();
             <section style="max-width:920px; margin:48px auto 0;">
                 <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
                     <h3 style="font-size:1.3rem; font-weight:800; color:var(--color-dark); margin:0;">سایر مقالات خواندنی وبلاگ</h3>
-                    <a href="<?php echo esc_url(home_url('/blog/')); ?>" style="color:var(--color-primary-hover); font-weight:700; font-size:0.88rem; text-decoration:none;">مشاهده همه &larr;</a>
+                    <a href="<?php echo esc_url(home_url('/blog/')); ?>" style="color:var(--color-primary); font-weight:700; font-size:0.88rem; text-decoration:none;">مشاهده همه &larr;</a>
                 </div>
 
                 <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:20px;">
@@ -84,7 +84,7 @@ get_header();
                         while ($related->have_posts()) : $related->the_post();
                             $rel_img = basate_nab_get_blog_post_image_url(get_the_ID());
                             ?>
-                            <div class="home-blog-card" style="background:#fff; border:1px solid #ebd9c4; border-radius:14px; overflow:hidden; box-shadow:0 3px 12px rgba(35,23,9,0.05); display:flex; flex-direction:column; transition:transform 0.25s ease;">
+                            <div class="home-blog-card" style="background:#fff; border:1px solid #e2e8f0; border-radius:14px; overflow:hidden; box-shadow:0 3px 12px rgba(15,23,42,0.05); display:flex; flex-direction:column; transition:transform 0.25s ease;">
                                 <a href="<?php the_permalink(); ?>" style="display:block; height:150px; overflow:hidden;">
                                     <img src="<?php echo esc_url($rel_img); ?>" alt="<?php the_title_attribute(); ?>" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
                                 </a>

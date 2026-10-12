@@ -44,13 +44,7 @@
             <div class="brand-wrapper">
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="brand-link">
                     <div class="brand-logo-icon">
-                        <!-- Vintage Lamp SVG Icon -->
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 2h6l3 7H6l3-7z"/>
-                            <path d="M12 9v9"/>
-                            <path d="M8 22h8"/>
-                            <path d="M10 18h4"/>
-                        </svg>
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.jpg'); ?>" alt="لوگوی بساط ناب" style="width:100%; height:100%; object-fit:cover; border-radius:inherit;" loading="eager">
                     </div>
                     <div class="brand-text-block">
                         <span class="brand-title">بساط ناب</span>
@@ -64,7 +58,7 @@
         <div class="header-search">
             <form role="search" method="get" class="search-form-wrapper" action="<?php echo esc_url(home_url('/')); ?>">
                 <input type="hidden" name="post_type" value="product">
-                <input type="search" id="header-search-input" name="s" placeholder="جستجوی آباژور، تابلو رترو، چراغ رومیزی، آنتیک..." value="<?php echo get_search_query(); ?>" autocomplete="off" required>
+                <input type="search" id="header-search-input" name="s" placeholder="جستجوی آباژور، لوستر، آینه محدب، چراغ مطالعه، تابلو..." value="<?php echo get_search_query(); ?>" autocomplete="off" required>
                 <button type="submit" class="search-submit-btn" aria-label="جستجو">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </button>
@@ -104,38 +98,30 @@
 
     <!-- Navigation Menu Strip (Desktop) -->
     <div class="header-nav-strip">
-        <div class="container nav-strip-inner">
+        <div class="container nav-strip-inner" style="overflow-x:auto;">
             <nav class="nav-strip-menu">
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="<?php echo is_front_page() ? 'active' : ''; ?>">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
                     صفحه نخست
                 </a>
-                <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>">
-                    فروشگاه و همه محصولات
-                </a>
-                <a href="<?php echo esc_url(home_url('/?s=آباژور&post_type=product')); ?>">
-                    آباژورهای وینتیج
-                </a>
-                <a href="<?php echo esc_url(home_url('/?s=تابلو&post_type=product')); ?>">
-                    تابلوهای رترو
-                </a>
-                <a href="<?php echo esc_url(home_url('/?s=آنتیک&post_type=product')); ?>">
-                    اشیاء و ظروف آنتیک
-                </a>
-                <a href="<?php echo esc_url(home_url('/?s=ساعت&post_type=product')); ?>">
-                    ساعت و گرامافون
-                </a>
+                <a href="<?php echo esc_url(home_url('/product-category/table-lamps/')); ?>">آباژور رومیزی</a>
+                <a href="<?php echo esc_url(home_url('/product-category/floor-lamps/')); ?>">آباژور قدی</a>
+                <a href="<?php echo esc_url(home_url('/product-category/chandeliers/')); ?>">لوستر</a>
+                <a href="<?php echo esc_url(home_url('/product-category/study-lamps/')); ?>">چراغ مطالعه</a>
+                <a href="<?php echo esc_url(home_url('/product-category/wall-lamps/')); ?>">چراغ دیواری</a>
+                <a href="<?php echo esc_url(home_url('/product-category/decorative-clocks/')); ?>">ساعت دکوری</a>
+                <a href="<?php echo esc_url(home_url('/product-category/convex-mirrors/')); ?>">آینه محدب</a>
+                <a href="<?php echo esc_url(home_url('/product-category/decorative-mirrors/')); ?>">آینه‌های دکوری</a>
+                <a href="<?php echo esc_url(home_url('/product-category/vintage-decor/')); ?>">وسایل وینتیج</a>
+                <a href="<?php echo esc_url(home_url('/product-category/retro-frames/')); ?>">تابلوهای رترو</a>
                 <a href="<?php echo esc_url(home_url('/blog/')); ?>" class="<?php echo (is_page('blog') || is_home() || is_singular('post')) ? 'active' : ''; ?>">
                     وبلاگ و دانشنامه
-                </a>
-                <a href="#special-offers" class="highlight">
-                    ✨ ویترین آثار تک‌نسخه
                 </a>
             </nav>
             <div class="nav-strip-contact">
                 <a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener" style="color:inherit; display:inline-flex; align-items:center; gap:6px;">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
-                    <span>سفارش و استعلام در دایرکت @basate_nab</span>
+                    <span>استعلام در دایرکت @basate_nab</span>
                 </a>
             </div>
         </div>
@@ -148,7 +134,7 @@
     <div class="drawer-header">
         <div style="display:flex; align-items:center; gap:8px;">
             <div class="brand-logo-icon" style="width:36px; height:36px;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6l3 7H6l3-7z"/><path d="M12 9v9"/><path d="M8 22h8"/></svg>
+                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.jpg'); ?>" alt="لوگوی بساط ناب" style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">
             </div>
             <strong style="color:var(--color-dark); font-size:1.1rem;">بساط ناب</strong>
         </div>
@@ -158,18 +144,23 @@
         <ul class="drawer-menu-list">
             <li><a href="<?php echo esc_url(home_url('/')); ?>">🏠 صفحه نخست</a></li>
             <li><a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>">🛍️ همه محصولات فروشگاه</a></li>
-            <li><a href="<?php echo esc_url(home_url('/?s=آباژور&post_type=product')); ?>">💡 آباژور و چراغ‌های وینتیج</a></li>
-            <li><a href="<?php echo esc_url(home_url('/?s=تابلو&post_type=product')); ?>">🖼️ تابلوهای رترو و کهنه‌کاری</a></li>
-            <li><a href="<?php echo esc_url(home_url('/?s=آنتیک&post_type=product')); ?>">🏺 ظروف و اشیای آنتیک</a></li>
-            <li><a href="<?php echo esc_url(home_url('/?s=گرامافون&post_type=product')); ?>">📻 گرامافون و رادیوهای کلاسیک</a></li>
-            <li><a href="<?php echo esc_url(home_url('/?s=ساعت&post_type=product')); ?>">⏰ ساعت‌های دیواری و رومیزی رترو</a></li>
-            <li><a href="<?php echo esc_url(home_url('/blog/')); ?>">📚 وبلاگ و راهنمای دکوراسیون وینتیج</a></li>
+            <li><a href="<?php echo esc_url(home_url('/product-category/table-lamps/')); ?>">💡 آباژور رومیزی</a></li>
+            <li><a href="<?php echo esc_url(home_url('/product-category/floor-lamps/')); ?>">🛋️ آباژور قدی</a></li>
+            <li><a href="<?php echo esc_url(home_url('/product-category/chandeliers/')); ?>">🕯️ لوستر</a></li>
+            <li><a href="<?php echo esc_url(home_url('/product-category/study-lamps/')); ?>">📖 چراغ مطالعه</a></li>
+            <li><a href="<?php echo esc_url(home_url('/product-category/wall-lamps/')); ?>">🏮 چراغ دیواری</a></li>
+            <li><a href="<?php echo esc_url(home_url('/product-category/decorative-clocks/')); ?>">⏰ ساعت دکوری</a></li>
+            <li><a href="<?php echo esc_url(home_url('/product-category/convex-mirrors/')); ?>">🪞 آینه محدب</a></li>
+            <li><a href="<?php echo esc_url(home_url('/product-category/decorative-mirrors/')); ?>">✨ آینه‌های دکوری</a></li>
+            <li><a href="<?php echo esc_url(home_url('/product-category/vintage-decor/')); ?>">📻 وسایل وینتیج</a></li>
+            <li><a href="<?php echo esc_url(home_url('/product-category/retro-frames/')); ?>">🖼️ تابلوهای رترو</a></li>
+            <li><a href="<?php echo esc_url(home_url('/blog/')); ?>">📚 وبلاگ و دانشنامه دکوراسیون</a></li>
             <li><a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener">📸 پیج اینستاگرام @basate_nab</a></li>
             <li><a href="<?php echo esc_url($account_url); ?>">👤 حساب کاربری من</a></li>
         </ul>
         <div style="margin-top:24px; padding-top:16px; border-top:1px solid var(--color-border); font-size:0.85rem; color:var(--color-text-muted);">
             <p><strong>پشتیبانی و سفارش:</strong></p>
-            <p style="margin-top:4px;"><a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener" style="color:var(--color-dark); font-weight:700;">دایرکت اینستاگرام @basate_nab</a></p>
+            <p style="margin-top:4px;"><a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener" style="color:var(--color-primary); font-weight:700;">دایرکت اینستاگرام @basate_nab</a></p>
         </div>
     </div>
 </aside>

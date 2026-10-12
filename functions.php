@@ -483,7 +483,7 @@ add_filter('woocommerce_get_price_html', '__return_empty_string', 99, 2);
 add_action('woocommerce_single_product_summary', 'basate_nab_render_inquiry_box_on_single', 30);
 function basate_nab_render_inquiry_box_on_single() {
     echo '<div class="product-inquire-box" style="margin:24px 0; padding:18px 22px; background:linear-gradient(135deg, #fcf9f3, #f5ecd9); border:1px solid #dfceb7; border-radius:12px;">';
-    echo '<p style="margin:0 0 10px; font-weight:700; color:#231709; font-size:0.95rem;">جهت استعلام موجودی، اطلاعات بیشتر و ثبت سفارش این اثر وینتیج:</p>';
+    echo '<p style="margin:0 0 10px; font-weight:700; color:#0f172a; font-size:0.95rem;">جهت استعلام موجودی، اطلاعات بیشتر و ثبت سفارش این اثر وینتیج:</p>';
     echo '<a href="https://www.instagram.com/basate_nab" target="_blank" rel="noopener" class="btn-primary-retro" style="display:inline-flex; align-items:center; gap:8px; padding:10px 22px; width:fit-content;">';
     echo '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>';
     echo '<span>استعلام و ثبت سفارش در دایرکت @basate_nab</span>';
@@ -638,7 +638,7 @@ function basate_nab_render_product_video_tab_content() {
         <p style="font-size:0.9rem; color:var(--color-text-muted); line-height:1.8; margin-bottom:18px;">
             این ویدیو به صورت زنده از پیج رسمی <strong>بساط ناب (@basate_nab)</strong> ضبط شده تا وضعیت ظاهری، ابعاد، درخشش بدنه و نورپردازی این قطعه عتیقه را به صورت ۱۰۰٪ شفاف مشاهده نمایید.
         </p>
-        <div style="max-width:540px; margin:0 auto; border-radius:16px; overflow:hidden; box-shadow:0 8px 30px rgba(35,23,9,0.12); border:1px solid #ebd9c4;">
+        <div style="max-width:540px; margin:0 auto; border-radius:16px; overflow:hidden; box-shadow:0 8px 30px rgba(15,23,42,0.12); border:1px solid #e2e8f0;">
             <video controls preload="metadata" playsinline style="width:100%; display:block; background:#000;">
                 <source src="<?php echo esc_url($video['video_url']); ?>" type="video/mp4">
             </video>
@@ -655,3 +655,7 @@ function basate_nab_render_product_video_tab_content() {
 
 // 12. Automated SEO Blog Posts & Blog Page Initialization
 require_once BASATE_DIR . '/inc/blog-seeder.php';
+
+// 13. WooCommerce Product Categories Synchronizer
+require_once BASATE_DIR . '/inc/category-seeder.php';
+
