@@ -377,6 +377,50 @@ button, input, select, textarea {
   box-shadow: 0 2px 8px rgba(229, 57, 46, 0.2);
 }
 
+.action-btn.telegram-pill {
+  background: linear-gradient(135deg, #eef7fc 0%, #ffffff 100%);
+  border-color: #cbd5e1;
+  color: #229ED9;
+}
+
+.action-btn.telegram-pill:hover {
+  border-color: #229ED9;
+  color: #229ED9;
+  box-shadow: 0 2px 8px rgba(34, 158, 217, 0.25);
+  transform: translateY(-2px);
+}
+
+.action-btn.bale-pill {
+  background: linear-gradient(135deg, #eef9f8 0%, #ffffff 100%);
+  border-color: #cbd5e1;
+  color: #00A693;
+}
+
+.action-btn.bale-pill:hover {
+  border-color: #00A693;
+  color: #00A693;
+  box-shadow: 0 2px 8px rgba(0, 166, 147, 0.25);
+  transform: translateY(-2px);
+}
+
+.action-btn.hero-social-icon-btn {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+  flex-shrink: 0;
+}
+
+.hero-social-icons-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .action-btn.account-pill {
   color: var(--color-text-title);
 }

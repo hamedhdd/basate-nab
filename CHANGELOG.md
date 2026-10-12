@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **Official Telegram & Bale Channels Integration**:
   - Integrated official Telegram channel (`https://t.me/basate_nab`) and Bale channel (`https://ble.ir/basatenab`) across the entire website alongside Instagram (`@basate_nab`).
+  - **Homepage Hero Section**: Updated the hero card ("آباژورهای دست‌ساز وینتیج و روشنایی رترو") with 3 textless icon-only pill buttons (Instagram, Telegram, Bale) displayed inline with the primary CTA button.
   - **Homepage Social Section**: Upgraded social showcase with 3 branded CTA pill buttons (`Instagram`, `Telegram`, and `Bale`) with native SVG icons and hover feedback.
   - **Single Articles / Blog Posts**: Embedded `.post-social-channels-box` directly under the content of every blog post with dedicated join pills for Telegram, Bale, and Instagram.
   - **Single Product Page**: Enhanced inquiry box with quick-action links to Telegram, Bale, and Instagram Direct.
