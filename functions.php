@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('BASATE_VERSION', '1.2.0');
+define('BASATE_VERSION', '1.2.1');
 define('BASATE_DIR', get_template_directory());
 define('BASATE_URI', get_template_directory_uri());
 
@@ -718,4 +718,7 @@ require_once BASATE_DIR . '/inc/blog-seeder.php';
 
 // 13. WooCommerce Product Categories Synchronizer
 require_once BASATE_DIR . '/inc/category-seeder.php';
+
+// 14. SEO-Friendly Tags Seeder for Products & Posts
+require_once BASATE_DIR . '/inc/seo-tags-seeder.php';
 

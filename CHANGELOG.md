@@ -5,6 +5,17 @@ All notable changes to the **Basate Nab** WordPress Theme project will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-10-12
+
+### Added
+- **Complete Persian Locale Synchronization (`fa_IR`)**:
+  - Successfully switched WordPress core locale (`WPLANG`) and user profile locale to authentic Persian (`fa-IR` RTL).
+  - The WordPress admin dashboard now fully renders in Persian (پیشخوان ‹ بساط ناب — وردپرس).
+- **SEO-Friendly Persian Tags Architecture for Products & Posts**:
+  - Implemented [`inc/seo-tags-seeder.php`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/inc/seo-tags-seeder.php) mapping rich Persian SEO keyword tags across all 12 WooCommerce products (`product_tag`) and 12 editorial blog posts (`post_tag`).
+  - Added REST API endpoint `/wp-json/basate-nab/v1/sync-seo-tags` for automated continuous synchronization.
+  - Rendered interactive SEO tag pill badges in [`single.php`](file:///C:/Users/Hamed/.gemini/antigravity/scratch/basate-nab/single.php) linking to dedicated tag archive pages for enhanced internal linking and Google indexation.
+
 ## [2.0.0] - 2026-10-12
 
 ### Added

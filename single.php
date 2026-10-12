@@ -75,6 +75,23 @@ get_header();
                     </div>
                 </div>
 
+                <!-- SEO Tags Pills -->
+                <?php
+                $post_tags = get_the_tags();
+                if ($post_tags) : ?>
+                    <div class="post-tags-container" style="margin-top:20px; padding:16px; background:#fff; border:1px solid #e2e8f0; border-radius:12px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                        <span style="font-size:0.85rem; font-weight:700; color:var(--color-dark); display:inline-flex; align-items:center; gap:6px;">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                            برچسب‌های مرتبط:
+                        </span>
+                        <?php foreach ($post_tags as $tag) : ?>
+                            <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>" class="tag-pill" style="display:inline-flex; align-items:center; padding:4px 12px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:999px; font-size:0.8rem; color:#475569; text-decoration:none; transition:all 0.2s ease;">
+                                #<?php echo esc_html($tag->name); ?>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
                 <!-- Footer Author & Share Box -->
                 <div style="margin-top:24px; padding:24px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
                     <div style="display:flex; align-items:center; gap:14px;">
